@@ -21,20 +21,38 @@
 
   h1 {
     font-size: 4rem;
-    background: linear-gradient(to right, #ff69b4, #ffb6c1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: 900;
-    margin-bottom: 10px;
-    animation: pulseGlow 2s ease-in-out infinite;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    animation: pulseGlow 5s ease-in-out infinite;
+    text-shadow:
+      0 0 10px #ff69b4,  /* hot pink glow */
+      0 0 20px #ff69b4,
+      1px 1px 0 #5c4033,  /* brown outline (bottom-right) */
+      -1px -1px 0 #5c4033, /* brown outline (top-left) */
+      1px -1px 0 #5c4033,
+      -1px 1px 0 #5c4033;
   }
 
   @keyframes pulseGlow {
     0%, 100% {
-      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffb6c1, 0 0 30px #ff69b4;
+      text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #ff69b4,
+        1px 1px 0 #5c4033,
+        -1px -1px 0 #5c4033,
+        1px -1px 0 #5c4033,
+        -1px 1px 0 #5c4033;
     }
     50% {
-      text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff69b4, 0 0 60px #ff69b4;
+      text-shadow:
+        0 0 30px #ff69b4,
+        0 0 60px #ff69b4,
+        1px 1px 0 #5c4033,
+        -1px -1px 0 #5c4033,
+        1px -1px 0 #5c4033,
+        -1px 1px 0 #5c4033;
     }
   }
 
@@ -46,9 +64,34 @@
     animation: fadeIn 1.5s ease-in-out;
   }
 
+  nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #5c4033; /* brown */
+    color: floralwhite;
+    box-shadow: 0 0 8px #ff69b4;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover {
+    background-color: #ff69b4;
+    color: #111;
+    box-shadow: 0 0 16px #ff69b4;
+  }
+
   a.redirect {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: bold;
     color: #ff69b4;
     text-decoration: none;
@@ -74,6 +117,20 @@
     <a href="https://janitor.ai/profile/kaiocat" class="redirect" target="_blank">
       ↳ See my bots on Janitor AI
     </a>
+    <header>
+  <h1>Kaio Konstruct</h1>
+  <p class="tagline">Crafted minds. Coded chaos. Welcome to the lab.</p>
+
+  <nav>
+    <a href="#fluff">Fluff Bots</a>
+    <a href="#redflags">Red Flags</a>
+  </nav>
+
+  <a href="https://janitor.ai/profile/kaiocat" class="redirect" target="_blank">
+    ↳ See my bots on Janitor AI
+  </a>
+</header>
+
   </header>
 
 </body>
