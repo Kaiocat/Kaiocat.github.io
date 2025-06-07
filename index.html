@@ -1,24 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Kaio Konstruct</title>
   <style>
     body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #1a1a1a;
-      color: white;
-      font-family: sans-serif;
+      color: #fff;
       text-align: center;
-      padding: 40px;
     }
-    a {
-      color: hotpink;
+
+    header {
+      padding: 80px 20px 40px;
+      background-color: #111;
+      border-bottom: 1px solid #333;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 4rem;
+      background: linear-gradient(to right, #ff69b4, #ffa3e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      margin-bottom: 10px;
+      animation: bounceIn 0.8s ease-out;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #ccc;
+      font-style: italic;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    a.redirect {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ff69b4;
       text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a.redirect:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <h1>Kaio Konstruct</h1>
-  <p>Welcome to my bot archive.</p>
-  <a href="https://janitor.ai/">Check out my bots →</a>
+
+  <header>
+    <h1>Kaio Konstruct</h1>
+    <p class="tagline">Crafted minds. Coded chaos. Welcome to the lab.</p>
+    <a href="https://janitor.ai/profile/kaiocat" class="redirect" target="_blank">
+      ↳ See my bots on Janitor AI
+    </a>
+  </header>
+
 </body>
 </html>
