@@ -3,7 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Good Kitties</title>
+  <div class="bot-grid">
+  <!-- All your .bot-card divs go here -->
+</div>
+
   <style>
+    .bot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.bot-card {
+  flex: 1 1 300px;
+  max-width: 300px;
+}
+
     body {
       background-color: #1a1a1a;
       color: floralwhite;
@@ -24,6 +40,7 @@
       margin-bottom: 40px;
     }
 
+    
     .bot-card {
       background-color: #2a2a2a;
       border: 2px solid #5c4033;
