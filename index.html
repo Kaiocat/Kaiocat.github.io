@@ -4,63 +4,67 @@
   <meta charset="UTF-8">
   <title>Kaio Konstruct</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1a1a1a;
-      color: #fff;
-      text-align: center;
-    }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1a1a1a;
+    color: floralwhite;
+    text-align: center;
+  }
 
-    header {
-      padding: 80px 20px 40px;
-      background-color: #111;
-      border-bottom: 1px solid #333;
-      animation: fadeIn 1s ease-in-out;
-    }
+  header {
+    padding: 80px 20px 40px;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+    animation: fadeIn 1s ease-in-out;
+  }
 
-    h1 {
-      font-size: 4rem;
-      background: linear-gradient(to right, #ff69b4, #ffa3e0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 900;
-      margin-bottom: 10px;
-      animation: bounceIn 0.8s ease-out;
-    }
+  h1 {
+    font-size: 4rem;
+    background: linear-gradient(to right, #ff69b4, #ffb6c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    margin-bottom: 10px;
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
 
-    .tagline {
-      font-size: 1.2rem;
-      color: #ccc;
-      font-style: italic;
-      margin-bottom: 30px;
-      animation: fadeIn 1.5s ease-in-out;
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffb6c1, 0 0 30px #ff69b4;
     }
+    50% {
+      text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff69b4, 0 0 60px #ff69b4;
+    }
+  }
 
-    a.redirect {
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #ff69b4;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
+  .tagline {
+    font-size: 1.2rem;
+    color: floralwhite;
+    font-style: italic;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
 
-    a.redirect:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
+  a.redirect {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 
-    @keyframes bounceIn {
-      0% { transform: translateY(-30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
+  a.redirect:hover {
+    color: floralwhite;
+    text-decoration: underline;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
 </head>
 <body>
 
