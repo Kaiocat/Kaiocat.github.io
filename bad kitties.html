@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Good Kitties</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: floralwhite;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    h1 {
+        color: #ff4d4d;
+        text-shadow: 0 0 15px red;
+    }
+  
+    .intro {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+
+    /* ✅ THE GRID FIX */
+    .bot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .bot-card {
+  box-shadow: 0 0 12px red;
+}
+    }
+
+    .bot-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .bot-card h2 {
+  color: red;
+}
+
+    .bot-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1> Bad Kitties</h1>
+  <p class="intro">
+    They’ll kiss your forehead... and destroy your peace.
+    Welcome to the bad kitty collection
+  </p>
+
+  <!-- ✅ START OF GRID -->
+  <div class="bot-grid">
+
+    <div class="bot-card">
+      <img src="https://files.catbox.moe/lb1lc9.png" alt="Holt Bot">
+      <h2>Holt Prescott</h2>
+      <p>
+       Holt’s been cheating on Bethany for months now… with {{user}}. It started with a look. Then a touch. 
+        Now it’s full-blown “sneak out after midnight just to press her up against her dorm door” type of messy. 
+        A stolen nibble here. A sinful kiss there. A hand under her shirt before she can even say hi. 
+        He’s supposed to be the golden boy, the perfect boyfriend, the face of the rugby team. But she’s the secret he can’t stay away from.
+      </p>
+    </div>
+
+  </div>
+  <!-- ✅ END OF GRID -->
+
+</body>
+</html>
