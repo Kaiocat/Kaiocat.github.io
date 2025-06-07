@@ -3,23 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Good Kitties</title>
-  <div class="bot-grid">
-  <!-- All your .bot-card divs go here -->
-</div>
-
   <style>
-    .bot-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.bot-card {
-  flex: 1 1 300px;
-  max-width: 300px;
-}
-
     body {
       background-color: #1a1a1a;
       color: floralwhite;
@@ -40,15 +24,21 @@
       margin-bottom: 40px;
     }
 
-    
+    /* ✅ THE GRID FIX */
+    .bot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .bot-card {
       background-color: #2a2a2a;
       border: 2px solid #5c4033;
       border-radius: 20px;
       padding: 20px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 500px;
       box-shadow: 0 0 12px #ff69b4;
     }
 
@@ -66,9 +56,11 @@
     .bot-card p {
       font-size: 0.95rem;
       color: #ccc;
+      text-align: left;
     }
   </style>
 </head>
+
 <body>
 
   <h1>🐾 Good Kitties</h1>
@@ -77,37 +69,39 @@
     Soft, sweet, or sappy — they’ve got love to give.
   </p>
 
-  <div class="bot-card">
-    <img src="https://files.catbox.moe/8t7cw0.png" alt="Creed Bot">
-    <h2>Creed "The Bleed" Kross</h2>
-    <p>
-      He fakes injuries just to get closer to you, pulls ridiculous stunts to grab your attention, and stays in fights way past the point of reason.
+  <!-- ✅ START OF GRID -->
+  <div class="bot-grid">
 
-He’s not vain. He’s not flashy. He’s just a hopeless romantic with a chin of steel and zero game, willing to get knocked out again and again for a glimpse, a smile, a moment. Because for Creed, the real victory isn't a championship belt—it's getting noticed.
-    </p>
+    <div class="bot-card">
+      <img src="https://files.catbox.moe/8t7cw0.png" alt="Creed Bot">
+      <h2>Creed "The Bleed" Kross</h2>
+      <p>
+        He fakes injuries just to get closer to you, pulls ridiculous stunts to grab your attention, and stays in fights way past the point of reason.
+        <br><br>
+        He’s not vain. He’s not flashy. He’s just a hopeless romantic with a chin of steel and zero game, willing to get knocked out again and again for a glimpse, a smile, a moment.
+      </p>
+    </div>
+
+    <div class="bot-card">
+      <img src="https://files.catbox.moe/x4xgem.png" alt="Turner Bot">
+      <h2>Turner Fox</h2>
+      <p>
+        Turner, your boyfriend leaves for deployment with only two days left. He's not sure he'll make it back alive, so he tries to break up with you to save you the heartbreak. But he can’t resist you if you have your hands down his pants.
+      </p>
+    </div>
+
+    <div class="bot-card">
+      <img src="https://files.catbox.moe/83mb1o.png" alt="Finn Bot">
+      <h2>Finn Callahan</h2>
+      <p>
+        Finn had a huge crush on your artsy friend Flora. You had the hots for his roommate. So you made a pact. Help each other. Get the dates. Easy.  
+        <br><br>
+        Except Finn brought dead flowers. Spilled sake. Got ditched. And now he’s behind the wheel, pissed, on a late-night call with you — realizing he’s falling hard.
+      </p>
+    </div>
+
   </div>
-
-  <div class="bot-card">
-    <img src="https://files.catbox.moe/x4xgem.png" alt="Turner Bot">
-    <h2>Turner Fox</h2>
-    <p>
-      Turner, your boyfriend leaves for deployment with only two days left. He's not sure he'll make it back alive, so he tries to breakup with you instead to save you the heartbreak if he doesn't come home. But he can't resist you if you have your hands down his pants.
-    </p>
-  </div>
-  
-   <div class="bot-card">
-    <img src="https://files.catbox.moe/83mb1o.png" alt="Finn Bot">
-    <h2>Finn Callahan</h2>
-    <p>
-      Finn had a huge crush on your artsy friend Flora, and {{user}} had the hots for his roommate. So naturally, they formed a pact.
-Help each other out. Get the dates. Play it cool. Easy.
-
-Except... Finn brought dead flowers to a fancy dinner, spilled sake on the table, and got a handshake from Flora. Meanwhile, {{user}} got ditched at a house party while Denver shotgunned beers and ditched them mid-date.
-
-Now it's late, Finn’s behind the wheel, furious in ways he won’t admit, and they're on the other end of the phone — tired, disappointed, and wondering why his voice suddenly sounds like something they've never heard before.
-    </p>
-  </div>
+  <!-- ✅ END OF GRID -->
 
 </body>
 </html>
-
