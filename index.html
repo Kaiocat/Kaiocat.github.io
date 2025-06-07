@@ -122,15 +122,38 @@
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
+    .pfp-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.paw-pad {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  bottom: 20px;
+  right: 20px;
+  filter: drop-shadow(0 0 6px #ff69b4) drop-shadow(0 0 12px #ffb6c1);
+  transition: transform 0.3s ease;
+}
+
+.paw-pad:hover {
+  transform: scale(1.1);
+}
+
 </style>
 </head>
 <body>
   
     <header>
 
-  <div class="pfp-container">
-    <img src="https://files.catbox.moe/vq7e8v.png" alt="Kaio PFP" class="profile-pic">
-  </div>
+  <div class="pfp-wrapper">
+  <img src="https://files.catbox.moe/vq7e8v.png" alt="Kaio PFP" class="profile-pic">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Paw-print.svg/2048px-Paw-print.svg.png" alt="Paw Pad" class="paw-pad">
+</div>
+
 
   <h1>Kaio Konstruct</h1>
 
