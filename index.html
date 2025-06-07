@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<div class="pfp-wrapper">
+  <img src="https://files.catbox.moe/vq7e8v.png" alt="Kaio PFP" class="profile-pic">
+  <img src="https://emoji.discord.st/emojis/3d_dog_paw_pink.png" alt="Paw Pad" class="paw-pad">
+</div>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -122,6 +126,26 @@
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
+    .pfp-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.paw-pad {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 0 6px #ff69b4) drop-shadow(0 0 12px #ffb6c1);
+  transition: transform 0.3s ease;
+}
+
+.paw-pad:hover {
+  transform: scale(1.1);
+}
+
 </style>
 </head>
 <body>
