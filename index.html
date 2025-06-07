@@ -98,19 +98,19 @@
 .halo-button::before {
   content: "";
   position: absolute;
-  top: -20px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%) scale(0);
-  width: 60px;
-  height: 20px;
+  width: 80px;
+  height: 30px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,150,0.7), transparent 70%);
-  box-shadow: 0 0 15px 5px rgba(255, 255, 100, 0.4);
+  border: 3px solid rgba(255, 255, 150, 0.8);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 150, 0.4);
+  background: transparent;
   opacity: 0;
   transition: all 0.4s ease-out;
   pointer-events: none;
 }
-
 .halo-button:hover::before {
   transform: translateX(-50%) scale(1);
   opacity: 1;
