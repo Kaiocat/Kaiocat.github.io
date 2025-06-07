@@ -154,24 +154,36 @@
   75% { transform: rotate(-3deg); }
   100% { transform: rotate(0deg); }
 }
-.footer-nav {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 30px 0;
-  background-color: #111;
-  border-top: 1px solid #333;
-}
-
-.footer-nav a {
-  text-decoration: none;
+    .dropdown-toggle {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
   font-weight: bold;
-  color: #ff69b4;
-  transition: color 0.3s ease;
+  border-radius: 20px;
+  border: none;
+  background-color: #5c4033;
+  color: floralwhite;
+  box-shadow: 0 0 8px #ff69b4;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.footer-nav a:hover {
-  color: floralwhite;
+.dropdown-toggle:hover {
+  background-color: #ff69b4;
+  color: #111;
+  box-shadow: 0 0 12px #ffb6c1;
+}
+
+.dropdown-content {
+  display: none;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border: 2px solid #5c4033;
+  box-shadow: 0 0 20px #ff69b4;
+  border-radius: 12px;
 }
 
 </style>
@@ -194,20 +206,38 @@
     <a href="#fluff">Good Kitties</a>
     <a href="#redflags">Bad Kitties</a>
   </nav>
+<button class="dropdown-toggle" onclick="toggleAbout()">🐾 About + Info</button>
 
+<div id="aboutSection" class="dropdown-content">
+  <section id="about">
+    <h2>✨ About Kaio</h2>
+    <p>Heya, I’m Kaio (aka Kaiocat)! I make bots with claws, charm, and emotional instability — mostly for Janitor AI.</p>
+  </section>
+
+  <section id="notes">
+    <h2>📒 Notes & Warnings</h2>
+    <p>Some bots are wholesome, others are feral. Check warnings!</p>
+  </section>
+
+  <section id="faq">
+    <h2>🐈‍⬛ FAQ</h2>
+    <ul>
+      <li><strong>Use in stories?</strong> → Yup, just credit me!</li>
+      <li><strong>Updates?</strong> → When I’m not crying over CSS</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>💌 Contact</h2>
+    <p>DM on Janitor AI or Discord link coming soon.</p>
+  </section>
+</div>
+      
   <a href="https://janitor.ai/profile/kaiocat" class="redirect" target="_blank">
     ↳ Return
   </a>
 
 </header>
-<footer>
-  <nav class="footer-nav">
-    <a href="#about">About</a>
-    <a href="#notes">Warnings</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</footer>
 
 
 
