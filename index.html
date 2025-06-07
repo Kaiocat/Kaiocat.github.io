@@ -121,50 +121,41 @@
   overflow: visible;
 }
 
-/* Devil Horns (two points) */
+/* HORN BASE STYLES */
 .devil-button::before,
 .devil-button::after {
   content: "";
   position: absolute;
   top: -18px;
-  width: 10px;
-  height: 18px;
-  background: red;
-  border-radius: 0 50% 50% 50%;
-  transform: scale(0);
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px red;
-}
-
-.devil-button::before {
-  left: 20%;
-  transform: rotate(-30deg) scale(0);
-}
-
-.devil-button::after {
-  right: 20%;
-  transform: rotate(30deg) scale(0);
-}
-
-/* Devil Tail (curved tip) */
-.devil-button::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  right: -15px;
-  width: 40px;
+  width: 12px;
   height: 20px;
-  border-bottom: 4px solid red;
-  border-left: 4px solid transparent;
-  border-radius: 0 0 100% 0;
-  transform: rotate(-30deg) scale(0);
+  background: red;
+  border-radius: 50% 50% 0 0;
   box-shadow: 0 0 10px red;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Activate horns + tail on hover */
+/* LEFT HORN */
+.devil-button::before {
+  left: 15%;
+  transform-origin: bottom center;
+  transform: rotate(-25deg) scale(0);
+}
+
+/* RIGHT HORN */
+.devil-button::after {
+  right: 15%;
+  transform-origin: bottom center;
+  transform: rotate(25deg) scale(0);
+}
+
+/* SHOW HORNS ON HOVER */
 .devil-button:hover::before,
 .devil-button:hover::after {
-  transform: rotate(var(--rotate, 0deg)) scale(1);
+  opacity: 1;
+  transform: rotate(var(--rotate)) scale(1);
 }
 
   a.redirect {
