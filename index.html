@@ -154,6 +154,25 @@
   75% { transform: rotate(-3deg); }
   100% { transform: rotate(0deg); }
 }
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px 0;
+  background-color: #111;
+  border-top: 1px solid #333;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ff69b4;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: floralwhite;
+}
 
 </style>
 </head>
@@ -181,6 +200,14 @@
   </a>
 
 </header>
+<footer>
+  <nav class="footer-nav">
+    <a href="#about">About</a>
+    <a href="#notes">Warnings</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</footer>
 
 
 
