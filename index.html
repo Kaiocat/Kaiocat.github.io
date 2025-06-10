@@ -216,6 +216,40 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
+  .summon-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+  .magic-summon {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle at center, #ffb6c1, #8a0253);
+  color: white;
+  font-size: 0.9em;
+  font-family: 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5), 0 0 30px rgba(255, 105, 180, 0.6);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  }
+.magic-summon:hover {
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.9), 0 0 40px rgba(255, 182, 193, 1);
+  transform: rotate(5deg) scale(1.05);
+}
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+  
 </style>
 
 </head>
@@ -280,7 +314,17 @@ function toggleAbout() {
   content.style.display = content.style.display === 'block' ? 'none' : 'block';
 }
 </script>
-
+  
+<script>
+  document.getElementById('summon-btn').addEventListener('click', () => {
+    alert("✨ A bot has been summoned! (Coming soon...)");
+  });
+</script>
 
 </body>
 </html>
+<div class="summon-wrapper">
+  <button class="magic-summon" id="summon-btn">
+    <span class="circle-text">Summon a Kitty</span>
+  </button>
+</div>
