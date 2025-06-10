@@ -1,33 +1,28 @@
 <style>
- html, body {
+html, body {
   margin: 0;
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
   color: floralwhite;
   text-align: center;
-  background-color: #1a0e0f;
+  background-color: #000; /* safe fallback */
   overflow-x: hidden;
 }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(17, 17, 17, 0.1); /* ✅ requested soft overlay */
-    z-index: -2;
-  }
+
+ body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(17, 17, 17, 0.1); /* ultra light overlay */
+  z-index: -2;
+  pointer-events: none;
+}
 
   .background-image {
-    position: fixed;
-    top: 0; left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: url('https://files.catbox.moe/at9l9z.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -3; /* ✅ sits under body::before */
-    opacity: 0.25;
-  }
+  z-index: -3;
+  opacity: 0.35; /* Try 0.35–0.4 to balance */
+}
+
 
   header {
     padding: 80px 20px 40px;
