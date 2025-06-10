@@ -216,6 +216,7 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 .summon-wrapper {
   position: fixed;
   bottom: 0;
@@ -250,18 +251,20 @@ body::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 20px;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 22px;
   font-weight: bold;
   color: hotpink;
   text-shadow: 0 0 5px deeppink, 0 0 10px hotpink, 0 0 15px pink;
   pointer-events: none;
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   z-index: 1000;
 }
 
-  .magic-circle:hover + .summon-label {
+.magic-circle:hover + .summon-label {
   opacity: 1;
 }
  .typewriter {
