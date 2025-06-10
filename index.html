@@ -238,6 +238,21 @@
   z-index: -1; /* stay behind everything */
   opacity: 0.25; /* adjust if it’s too strong */
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(111, 50, 24, 0.6), rgba(255, 105, 180, 0.2));
+  z-index: -1;
+  pointer-events: none;
+  animation: gradientDrift 15s ease infinite;
+  background-size: 400% 400%;
+}
+@keyframes gradientDrift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 </style>
 </head>
