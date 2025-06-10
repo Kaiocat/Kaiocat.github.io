@@ -208,8 +208,11 @@ body::before {
   font-family: 'UnifrakturCook', cursive;
   font-size: 22px;
   font-weight: bold;
-  color: #ffccff;
-  text-shadow: 0 0 8px #cc33ff, 0 0 12px #ff66cc, 0 0 18px #ff99ff;
+  color: #ff4ecb;
+  text-shadow:
+  0 0 8px #cc2288,
+  0 0 12px #ff4ecb,
+  0 0 18px #ff70d9;
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -226,20 +229,6 @@ body::before {
   cursor: pointer;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
- .typewriter {
-  font-family: 'Segoe UI', sans-serif;
-  color: hotpink;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid hotpink;
-  animation: typing 4s steps(15, end) forwards, blink-caret 0.6s step-end infinite;
-}
-
-/* Typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 14ch }  /* adjust for your title length */
 }
 
 /* Blinking caret */
