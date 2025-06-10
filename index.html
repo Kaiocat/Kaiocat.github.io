@@ -218,26 +218,22 @@ body::before {
   }
   @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 .summon-wrapper {
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  position: fixed;     /* anchors the whole group */
+  bottom: 10px;
+  right: 20px;
   z-index: 999;
-  pointer-events: auto;
   display: inline-block;
-  margin: 0;
 }
 
 .magic-circle {
   max-width: 200px;
   height: auto;
   cursor: pointer;
+  display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 0;
-  display: block;
-  position: fixed;
-  bottom: -50;
-  right: 0;
-  margin: 0;
+  margin: 0; /* optional */
+  position: static; /* UNDO any 'fixed'! */
 }
 
 .magic-circle:hover {
