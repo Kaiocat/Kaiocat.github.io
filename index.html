@@ -247,6 +247,42 @@ body::before {
   from, to { border-color: transparent }
   50% { border-color: hotpink }
 }
+.summon-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #1a001f;
+  border: 2px solid hotpink;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #ff99cc;
+  position: relative;
+}
+
+#popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #ff66cc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popup-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
 </style>
 
@@ -316,6 +352,86 @@ function toggleAbout() {
   <span class="summon-label">Summon your kitty</span>
   <img src="https://files.catbox.moe/szk9no.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
 </div>
+  
+<div class="summon-popup" id="summon-popup">
+  <div class="popup-content">
+    <span id="popup-close">&times;</span>
+    <img id="bot-image" src="" alt="Summoned Bot">
+    <h2 id="bot-name"></h2>
+    <p id="bot-type"></p>
+    <p id="bot-desc"></p>
+  </div>
+</div>
+  <script>
+  const bots = [
+    {
+      name: "Creed "The Bleed" Kross",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/8t7cw0.png",
+      description: "He fakes injuries just to get closer to you, pulls ridiculous stunts to grab your attention, and stays in fights way past the point of reason."
+    },
+    {
+      name: "Turner Fox",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/x4xgem.png",
+      description: "He wants to break up with you before his NATO deployment incase he doesn't make it home, but he can't resist you if you have your hands down his pants..."
+    },
+    // Add your real bot data here!
+     {
+      name: "Finn Callahan",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/83mb1o.png",
+      description: "Finn had a huge crush on your artsy friend Flora. You had the hots for his roommate. So you made a pact. Help each other. Get the dates. Easy. Except Finn brought dead flowers. Spilled sake. Got ditched. And now he’s behind the wheel, pissed, on a late-night call with you — realizing he’s falling hard."
+    },
+       {
+      name: "Crew Payne",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/hkw0ax.png",
+      description: "Files go missing, details slipped, and you're acting different. He wants to believe you're innocent. Needs to. But every instinct tells him something’s wrong. If you’re clean, he’ll destroy the world for you. If you’re not? He’ll destroy himself trying to prove you are."
+    },
+      {
+      name: "Aiden Wolf",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/q97jbj.png",
+      description: "You were never supposed to cross the predator-prey boundary of the forest, but in order to fetch the scent charm a fallen fellow prey left behind you did. Now you're face to face with Aiden who doesn't ever let his prey go."
+    },
+        {
+      name: "Holt Prescott",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/lb1lc9.png",
+      description: "Holt’s been cheating on Bethany for months now… with {{user}}. It started with a look. Then a touch. Now it’s full-blown “sneak out after midnight just to press her up against her dorm door” type of messy. A stolen nibble here. A sinful kiss there. A hand under her shirt before she can even say hi. He’s supposed to be the golden boy, the perfect boyfriend, the face of the rugby team. But she’s the secret he can’t stay away from.."
+    },
+          {
+      name: "Revan Ledgar",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/cx4o0r.png",
+      description: "Toxic ex energy incarnate. All slick words, red lights, and hands that know exactly where to grip. He won’t love you—but he’ll ruin you so sweetly you’ll beg for more. You used to be a thing. Kind of. Mostly naked, never committed. Now you’ve got someone new... and Revan? He smiles like he doesn’t care. Watches like he does. Sharp jaw, sharper tongue. Seductive. Dangerous. Emotionally unavailable—and always within reach. He’s not interested in being yours. He’s interested in making sure you’ll never be anyone else’s."
+    },
+  ];
+
+  const summonBtn = document.getElementById('summon-btn');
+  const popup = document.getElementById('summon-popup');
+  const popupClose = document.getElementById('popup-close');
+
+  const botImg = document.getElementById('bot-image');
+  const botName = document.getElementById('bot-name');
+  const botType = document.getElementById('bot-type');
+  const botDesc = document.getElementById('bot-desc');
+
+  summonBtn.addEventListener('click', () => {
+    const chosenBot = bots[Math.floor(Math.random() * bots.length)];
+    botImg.src = chosenBot.image;
+    botName.textContent = chosenBot.name;
+    botType.textContent = `Type: ${chosenBot.type}`;
+    botDesc.textContent = chosenBot.description;
+
+    popup.style.display = 'flex';
+  });
+
+  popupClose.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+</script>
 
 </body>
 
