@@ -146,30 +146,6 @@ body::before {
     isolation: isolate;
   }
 
-  .paw-pad {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    width: 80px;
-    background: none;
-    z-index: 2;
-    pointer-events: auto;
-    filter: drop-shadow(0 0 6px #ff69b4) drop-shadow(0 0 12px #ffb6c1);
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
-
-  .paw-pad:hover {
-    animation: wiggle 0.4s ease-in-out;
-  }
-
-  @keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
-    75% { transform: rotate(-3deg); }
-    100% { transform: rotate(0deg); }
-  }
-
   .dropdown-toggle {
     display: block;
     margin: 20px auto 10px auto;
@@ -216,7 +192,6 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
-  @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
   
 .summon-wrapper {
   position: fixed;
@@ -278,7 +253,6 @@ body::before {
   
   <div class="pfp-wrapper">
   <img src="https://files.catbox.moe/atstan.png" alt="Kaio PFP" class="profile-pic">
-  <img src="https://files.catbox.moe/871166.png" alt="Paw Pad" class="paw-pad">
 </div>
 
 
