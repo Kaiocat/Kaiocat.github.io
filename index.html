@@ -222,6 +222,11 @@ body::before {
 .summon-wrapper:hover .summon-label {
   opacity: 1;
 }
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
 
 .magic-circle {
   max-width: 200px;
@@ -229,6 +234,14 @@ body::before {
   cursor: pointer;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+/* On hover: Enlarge and glow */
+.magic-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #ff66cc, 0 0 40px #ff99dd;
+  filter: drop-shadow(0 0 12px #ff4ecb);
 }
 
 /* Blinking caret */
