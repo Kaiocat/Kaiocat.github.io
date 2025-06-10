@@ -258,6 +258,25 @@ body::before {
   .magic-circle:hover + .summon-label {
   opacity: 1;
 }
+  .typewriter {
+  font-family: 'Segoe UI', sans-serif;
+  color: hotpink;
+  overflow: hidden;             /* ensures letters appear one by one */
+  white-space: nowrap;          /* keeps text in one line */
+  border-right: 3px solid hotpink; /* blinking cursor */
+  width: 0;
+  animation: typing 2s steps(15, end), blink-caret 0.6s step-end infinite;
+}
+/* Typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 14ch } /* Adjust to length of your text */
+}
+/* Blinking caret */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hotpink }
+}
 </style>
 
 </head>
@@ -272,7 +291,7 @@ body::before {
 </div>
 
 
-  <h1>Kaio Konstruct</h1>
+  <h1 class="typewriter">Kaio Konstruct</h1>
 <button class="dropdown-toggle" onclick="toggleAbout()">About + Info</button>
       <div id="aboutSection" class="dropdown-content">
   <section id="about">
