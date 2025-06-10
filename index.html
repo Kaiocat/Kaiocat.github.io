@@ -218,8 +218,8 @@ body::before {
   }
   @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 .summon-wrapper {
-  position: fixed;     /* anchors the whole group */
-  bottom: 0px;
+  position: fixed;
+  bottom: 10px;
   right: 20px;
   z-index: 999;
   display: inline-block;
@@ -231,29 +231,31 @@ body::before {
   cursor: pointer;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 0;
-  margin: 0; /* optional */
-  position: static; /* UNDO any 'fixed'! */
 }
 
 .magic-circle:hover {
-  transform: scale(1.07); /* No rotation */
+  transform: scale(1.05);
 }
-
+  
 .magic-circle:active {
   transform: scale(0.95) rotate(-2deg);
 }
 .summon-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
   font-family: 'UnifrakturCook', cursive;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  color: #ff66cc;
-  text-shadow: 0 0 8px #cc33ff, 0 0 12px #ff66cc;
+  color: #ffccff;
+  text-shadow: 0 0 8px #cc33ff, 0 0 12px #ff66cc, 0 0 18px #ff99ff;
+  pointer-events: none;
+  white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  margin-bottom: 10px;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
 }
-
 /* Make text appear only on hover */
 .summon-wrapper:hover .summon-text {
   opacity: 1;
@@ -354,6 +356,6 @@ function toggleAbout() {
 </body>
 </html>
 <div class="summon-wrapper">
+   <span class="summon-label">Summon your kitty</span>
   <img src="https://files.catbox.moe/szk9no.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
-  <span class="summon-label">Summon your kitty</span>
 </div>
