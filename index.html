@@ -21,13 +21,6 @@ body::before {
   pointer-events: none;
 }
 
-body.light-mode {
-  color: #111;
-  background:
-    linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
-    url('https://files.catbox.moe/at9l9z.png') center/cover no-repeat;
-}
-
   .background-image {
   position: fixed;
   top: 0;
@@ -60,9 +53,6 @@ body.light-mode {
       2px 2px 4px #ff1493,
       -2px -2px 4px #ff1493;
   }
-  body.light-mode h1 {
-  color: #c71585; /* stronger contrast on light */
-}
 
   @keyframes pulseGlow {
     0%, 100% {
@@ -211,7 +201,6 @@ body.light-mode {
     border: 2px solid #5c4033;
     box-shadow: 0 0 20px #ff69b4;
     border-radius: 12px;
-    color: #ff69b4;
   }
 
   @keyframes subtlePulse {
@@ -227,7 +216,6 @@ body.light-mode {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
-
 </style>
 
 </head>
@@ -235,7 +223,7 @@ body.light-mode {
   <div class="background-image"></div>
 
     <header>
-
+  
   <div class="pfp-wrapper">
   <img src="https://files.catbox.moe/atstan.png" alt="Kaio PFP" class="profile-pic">
   <img src="https://files.catbox.moe/871166.png" alt="Paw Pad" class="paw-pad">
@@ -286,4 +274,13 @@ body.light-mode {
 
 </header>
 
+<script>
+function toggleAbout() {
+  const content = document.getElementById('aboutSection');
+  content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+
+</body>
 </html>
