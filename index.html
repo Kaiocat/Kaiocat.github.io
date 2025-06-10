@@ -5,7 +5,11 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   color: floralwhite;
   text-align: center;
-  background-color: #000; /* safe fallback */
+  background:
+    /* 1. transparent dark overlay */
+    linear-gradient(rgba(17,17,17,0.15), rgba(17,17,17,0.15)),
+    /* 2. your background image */
+    url('https://files.catbox.moe/at9l9z.png') center/cover no-repeat;
   overflow-x: hidden;
 }
 
