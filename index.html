@@ -216,26 +216,25 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
- .summon-wrapper {
+.summon-wrapper {
   position: fixed;
-  bottom: -50px;
+  bottom: 0;
   right: 0;
   z-index: 999;
   pointer-events: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-block;
+  margin: 20px;
 }
 
-/* Remove fixed width/height; scale with image size */
 .magic-circle {
   max-width: 200px;
   height: auto;
   cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 0;
+  display: block;
 }
-
 
 .magic-circle:hover {
   transform: scale(1.07); /* No rotation */
@@ -245,14 +244,18 @@ body::before {
   transform: scale(0.95) rotate(-2deg);
 }
 .summon-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Segoe UI', sans-serif;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
   color: hotpink;
-  text-shadow: 0 0 8px deeppink, 0 0 15px pink;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  text-shadow: 0 0 5px deeppink, 0 0 10px hotpink, 0 0 15px pink;
   pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
 }
 
   .magic-circle:hover + .summon-label {
