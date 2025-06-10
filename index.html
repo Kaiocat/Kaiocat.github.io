@@ -225,11 +225,25 @@
   color: floralwhite;
   text-shadow: 0 0 6px #ff69b4;
 }
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://files.catbox.moe/aj14o9.png'); /* replace with your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* stay behind everything */
+  opacity: 0.25; /* adjust if it’s too strong */
+}
 
 </style>
 </head>
 <body>
-  
+  <div class="background-image"></div>
+
     <header>
 
   <div class="pfp-wrapper">
