@@ -216,34 +216,49 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
-  .summon-wrapper {
+ .summon-wrapper {
   position: fixed;
   bottom: 0;
   right: 0;
   z-index: 999;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
 /* Remove fixed width/height; scale with image size */
 .magic-circle {
-  max-width: 200px; /* or however big you want */
+  max-width: 200px;
   height: auto;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 0;
-  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
-  transition: all 0.3s ease;
-  margin: 20px;
 }
 
+
 .magic-circle:hover {
-  transform: scale(1.08) rotate(4deg);
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.9), 0 0 35px rgba(255, 182, 193, 1);
+  transform: scale(1.07); /* No rotation */
 }
 
 .magic-circle:active {
   transform: scale(0.95) rotate(-2deg);
 }
+.summon-label {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  color: hotpink;
+  text-shadow: 0 0 8px deeppink, 0 0 15px pink;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 
+  .magic-circle:hover + .summon-label {
+  opacity: 1;
+}
 </style>
 
 </head>
@@ -320,4 +335,5 @@ function toggleAbout() {
 </html>
 <div class="summon-wrapper">
   <img src="https://files.catbox.moe/omx9kl.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
+  <span class="summon-label">Summon your kitty</span>
 </div>
