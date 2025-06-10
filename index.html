@@ -216,13 +216,23 @@ body::before {
     color: floralwhite;
     text-shadow: 0 0 6px #ff69b4;
   }
+  .summon-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  pointer-events: auto;
+}
+
+/* Remove fixed width/height; scale with image size */
 .magic-circle {
-  width: 120px;
-  height: 120px;
+  max-width: 200px; /* or however big you want */
+  height: auto;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 0 12px rgba(255, 182, 193, 0.5);
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
   transition: all 0.3s ease;
+  margin: 20px;
 }
 
 .magic-circle:hover {
@@ -231,9 +241,9 @@ body::before {
 }
 
 .magic-circle:active {
-  transform: scale(0.97) rotate(-2deg);
+  transform: scale(0.95) rotate(-2deg);
 }
-  
+
 </style>
 
 </head>
