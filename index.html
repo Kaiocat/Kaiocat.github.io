@@ -261,25 +261,27 @@ body::before {
   .magic-circle:hover + .summon-label {
   opacity: 1;
 }
-  .typewriter {
+ .typewriter {
   font-family: 'Segoe UI', sans-serif;
   color: hotpink;
-  overflow: hidden;             /* ensures letters appear one by one */
-  white-space: nowrap;          /* keeps text in one line */
-  border-right: 3px solid hotpink; /* blinking cursor */
-  width: 0;
-  animation: typing 2s steps(15, end), blink-caret 0.6s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid hotpink;
+  animation: typing 2s steps(15, end) forwards, blink-caret 0.6s step-end infinite;
 }
+
 /* Typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 14ch } /* Adjust to length of your text */
+  to { width: 14ch }  /* adjust for your title length */
 }
+
 /* Blinking caret */
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: hotpink }
 }
+
 </style>
 
 </head>
