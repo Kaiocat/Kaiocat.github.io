@@ -218,11 +218,12 @@ body::before {
   }
   @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 .summon-wrapper {
-  position: fixed;
+  position: fixed;     /* for screen placement */
   bottom: 10px;
   right: 20px;
   z-index: 999;
   display: inline-block;
+  position: relative;  /* <-- add this */
 }
 
 .magic-circle {
