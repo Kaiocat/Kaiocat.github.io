@@ -21,20 +21,18 @@
   }
 
   h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    color: transparent;
-    position: relative;
-    display: inline-block;
-    animation: pulseGlow 4s ease-in-out infinite;
-    text-shadow:
-      0 0 15px #ff69b4,  /* hot pink glow */
-      0 0 20px #ff69b4,
-      1px 1px 0 #5c4033,  /* brown outline (bottom-right) */
-      -1px -1px 0 #5c4033, /* brown outline (top-left) */
-      1px -1px 0 #5c4033,
-      -1px 1px 0 #5c4033;
-  }
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ff69b4;  /* bring back vibrant base color */
+  position: relative;
+  display: inline-block;
+  animation: pulseGlow 4s ease-in-out infinite;
+  text-shadow:
+    0 0 15px #ff69b4,
+    0 0 30px #ff69b4,
+    2px 2px 4px #ff1493,   /* deeper pink edge */
+    -2px -2px 4px #ff1493;
+}
 
   @keyframes pulseGlow {
     0%, 100% {
