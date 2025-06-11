@@ -48,6 +48,12 @@
     .bot-card input[type="checkbox"] {
       margin-top: 10px;
     }
+    .bot-card.interacted {
+  box-shadow: 0 0 15px 5px hotpink;
+  background-color: rgba(255, 105, 180, 0.2);
+  border-color: deeppink;
+}
+
   </style>
 </head>
 <body>
@@ -94,36 +100,36 @@
       }
     ];
 
-    const botGrid = document.getElementById('bot-grid');
-    let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
+  const botGrid = document.getElementById('bot-grid');
+let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
 
-    bots.forEach(bot => {
-      const isChecked = interactedBots.includes(bot.name);
-      const card = document.createElement('div');
-      card.className = 'bot-card';
+bots.forEach(bot => {
+  const card = document.createElement('div');
+  card.className = 'bot-card';
 
-      card.innerHTML = `
-        <img src="${bot.image}" alt="${bot.name}">
-        <h3>${bot.name}</h3>
-        <p>${bot.type}</p>
-        <label>
-          <input type="checkbox" ${isChecked ? 'checked' : ''}>
-          Interacted
-        </label>
-      `;
+  const hasInteracted = interactedBots.includes(bot.name);
+  if (hasInteracted) card.classList.add('interacted');
 
-      const checkbox = card.querySelector('input[type="checkbox"]');
-      checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-          interactedBots.push(bot.name);
-        } else {
-          interactedBots = interactedBots.filter(name => name !== bot.name);
-        }
-        localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
-      });
+  card.innerHTML = `
+    <img src="${bot.image}" alt="${bot.name}">
+    <h3>${bot.name}</h3>
+    <p>${bot.type}</p>
+  `;
 
-      botGrid.appendChild(card);
-    });
+  card.addEventListener('click', () => {
+    if (!card.classList.contains('interacted')) {
+      card.classList.add('interacted');
+      interactedBots.push(bot.name);
+    } else {
+      card.classList.remove('interacted');
+      interactedBots = interactedBots.filter(name => name !== bot.name);
+    }
+
+    localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+  });
+
+  botGrid.appendChild(card);
+});
   </script>
 
 </body>
