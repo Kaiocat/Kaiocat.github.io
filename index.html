@@ -255,7 +255,10 @@ body::before {
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow: hidden;
+  position: relative; /* <-- important! */
 }
+
 @keyframes drawCard {
   0% {
     transform: rotateY(90deg) scale(0.8);
@@ -286,28 +289,26 @@ body::before {
   opacity: 0;
   animation: drawCardSpin 1.5s ease-out forwards;
   #sparkles {
-    border: 2px solid red; /* just temporarily */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-    radial-gradient(circle, #ffffffcc 1px, transparent 1px),
-    radial-gradient(circle, #ffccffcc 1px, transparent 1px);
-    background-size: 10px 10px;
-    opacity: 1;
-    pointer-events: none;
-    z-index: 2;
-    animation: sparklePoof 1s ease forwards;
-    animation-delay: 2.6s; /* Match your card spin duration! */
-}  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+
+  background: radial-gradient(circle at center, #ffffffcc 0%, transparent 70%);
+  opacity: 0;
+  animation: sparklePoof 1s ease forwards;
+  animation-delay: 2.6s; /* Match your spin timing */
+}
 
 @keyframes sparklePoof {
   0%   { opacity: 0; transform: scale(0.8); }
   30%  { opacity: 1; transform: scale(1.1); }
   100% { opacity: 0; transform: scale(1.5); }
 }
+
 .popup-content {
   position: relative;
 }
@@ -398,8 +399,8 @@ function toggleAbout() {
 </div>
 
 <div class="summon-popup" id="summon-popup">
+  <div id="sparkles"></div> <!-- This is HTML content -->
   <div class="popup-content">
-     <div id="sparkles"></div> <!-- This is HTML content -->
     <span id="popup-close">&times;</span>
     <img id="bot-image" src="" alt="Summoned Bot">
     <h2 id="bot-name"></h2>
