@@ -65,6 +65,18 @@
   from { text-shadow: 0 0 5px deeppink; }
   to   { text-shadow: 0 0 15px hotpink; }
 }
+    #completion-banner {
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: hotpink;
+  animation: completeGlow 1s infinite alternate;
+  text-shadow: 0 0 10px hotpink;
+}
+
+@keyframes completeGlow {
+  from { text-shadow: 0 0 10px deeppink; }
+  to   { text-shadow: 0 0 25px magenta; }
+}
   </style>
 </head>
 <body>
@@ -74,6 +86,9 @@
   Click on the cards to highlight the ones you’ve interacted with
 </p>
   <h3 id="completion-rate">Full Deck: 0%</h3>
+  <div id="completion-banner" style="display: none;">
+  🌟✨ You've completed your Cata-dex! ✨🌟
+</div>
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
@@ -151,7 +166,15 @@ bots.forEach(bot => {
     function updateCompletion() {
   const percent = Math.round((interactedBots.length / bots.length) * 100);
   completionRate.textContent = `Memory Completion: ${percent}%`;
+
+  const banner = document.getElementById('completion-banner');
+  if (percent === 100) {
+    banner.style.display = 'block';
+  } else {
+    banner.style.display = 'none';
+  }
 }
+
 updateCompletion(); // 🔁 Load current progress on page start
   </script>
 
