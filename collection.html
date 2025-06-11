@@ -89,7 +89,7 @@
       to   { text-shadow: 0 0 25px magenta; }
     }
 #go-back-button {
-  position: absolute;
+  position: fixed; /* changed from absolute → fixed stays visible on scroll */
   top: 20px;
   left: 20px;
   font-size: 1.1em;
@@ -99,8 +99,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
   z-index: 1000;
+  transition: color 0.3s ease;
+}
+
+#go-back-button span {
+  transition: text-decoration 0.3s ease;
 }
 
 #go-back-button:hover {
@@ -111,14 +115,12 @@
   text-decoration: underline;
 }
 
-
   </style>
 </head>
 <body>
   <a href="index.html" id="go-back-button">
   ❤️ <span>Go back</span>
 </a>
-
   <h2>Cata-dex</h2>
   <p id="subheading">Click on the cards to highlight the ones you’ve interacted with</p>
   <h3 id="completion-rate">Full Deck: 0%</h3>
