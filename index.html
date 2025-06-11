@@ -379,13 +379,14 @@ function toggleAbout() {
 </div>
   
 <div class="summon-popup" id="summon-popup">
-  <div class="popup-content">
-     <div class="card-face" id="card-face">
-    <span id="popup-close">&times;</span>
-    <img id="bot-image" src="" alt="Summoned Bot">
-    <h2 id="bot-name"></h2>
-    <p id="bot-type"></p>
-    <p id="bot-desc"></p>
+  <div class="popup-content" id="popup-content">
+    <div class="card-face" id="card-face">
+      <span id="popup-close">&times;</span> <!-- ✅ only one close button -->
+      <img id="bot-image" src="" alt="Summoned Bot">
+      <h2 id="bot-name"></h2>
+      <p id="bot-type"></p>
+      <p id="bot-desc"></p>
+    </div>
   </div>
 </div>
   <script>
@@ -435,15 +436,18 @@ function toggleAbout() {
     }
   ];
 
-  const summonBtn = document.getElementById('summon-btn');
-  const popup = document.getElementById('summon-popup');
-  const popupClose = document.getElementById('popup-close');
+ const summonBtn = document.getElementById('summon-btn');
+const popup = document.getElementById('summon-popup');
+const popupClose = document.getElementById('popup-close');
 
-  const botImg = document.getElementById('bot-image');
-  const botName = document.getElementById('bot-name');
-  const botType = document.getElementById('bot-type');
-  const botDesc = document.getElementById('bot-desc');
+const botImg = document.getElementById('bot-image');
+const botName = document.getElementById('bot-name');
+const botType = document.getElementById('bot-type');
+const botDesc = document.getElementById('bot-desc');
 
+const popupContent = document.getElementById('popup-content');
+
+// 💬 Trigger the summon
 summonBtn.addEventListener('click', () => {
   const chosenBot = bots[Math.floor(Math.random() * bots.length)];
   botImg.src = chosenBot.image;
@@ -451,21 +455,23 @@ summonBtn.addEventListener('click', () => {
   botType.textContent = `Type: ${chosenBot.type}`;
   botDesc.textContent = chosenBot.description;
 
-  // Reset and animate popup content
-  const popupContent = document.querySelector('.popup-content');
   popupContent.classList.remove('reveal');
   popupContent.style.animation = 'none';
   void popupContent.offsetWidth;
   popupContent.style.animation = 'drawCardSpin 2.8s ease-out forwards';
 
-  // Show popup
   popup.style.display = 'flex';
 
-  // Reveal contents after spin ends
   setTimeout(() => {
     popupContent.classList.add('reveal');
   }, 2800);
 });
+
+// 💥 Close the popup
+popupClose.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+
 </script>
 
 </body>
