@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(#1c1c2b, #2e2e42);
       color: white;
@@ -15,25 +15,38 @@
 
     h2 {
       font-size: 2em;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
+    }
+
+    #subheading {
+      font-style: italic;
+      font-size: 1em;
+      color: hotpink;
+      margin-bottom: 25px;
+      animation: glowText 2s infinite alternate;
+    }
+
+    h3#completion-rate {
+      margin-bottom: 20px;
     }
 
     .bot-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 40px;
       justify-content: center;
     }
 
     .bot-card {
       border: 2px solid hotpink;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 15px;
       border-radius: 12px;
       width: 160px;
       text-align: center;
       position: relative;
       transition: transform 0.2s ease;
+      box-sizing: border-box;
     }
 
     .bot-card:hover {
@@ -43,194 +56,108 @@
     .bot-card img {
       max-width: 100%;
       border-radius: 8px;
+      margin-bottom: 8px;
     }
 
-    .bot-card input[type="checkbox"] {
-      margin-top: 10px;
+    .bot-card h3 {
+      margin: 5px 0;
     }
+
     .bot-card.interacted {
-  box-shadow: 0 0 15px 5px hotpink;
-  background-color: rgba(255, 105, 180, 0.2);
-  border-color: deeppink;
-}
-#subheading {
-  font-style: italic;
-  font-size: 1em;
-  color: hotpink;
-  margin-bottom: 10px;
-  animation: glowText 2s infinite alternate;
-}
+      box-shadow: 0 0 15px 3px hotpink;
+      background-color: rgba(255, 105, 180, 0.15);
+      border-color: deeppink;
+    }
 
-@keyframes glowText {
-  from { text-shadow: 0 0 5px deeppink; }
-  to   { text-shadow: 0 0 15px hotpink; }
-}
-#completion-popup {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.4s ease;
-}
+    #completion-banner {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: hotpink;
+      animation: completeGlow 1s infinite alternate;
+      text-shadow: 0 0 10px hotpink;
+    }
 
-.popup-inner {
-  background: #1e1e2e;
-  color: hotpink;
-  border: 2px solid deeppink;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 0 25px magenta;
-  position: relative;
-  animation: popupAppear 0.8s ease;
-}
+    @keyframes glowText {
+      from { text-shadow: 0 0 5px deeppink; }
+      to   { text-shadow: 0 0 15px hotpink; }
+    }
 
-.popup-inner h2 {
-  margin-top: 0;
-  text-shadow: 0 0 15px hotpink;
-}
-
-#close-popup {
-  position: absolute;
-  top: 5px; right: 10px;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: white;
-}
-
-.popup-hidden {
-  display: none;
-}
-
-@keyframes popupAppear {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
+    @keyframes completeGlow {
+      from { text-shadow: 0 0 10px deeppink; }
+      to   { text-shadow: 0 0 25px magenta; }
+    }
   </style>
 </head>
 <body>
 
   <h2>Cata-dex</h2>
-  <p id="subheading" style="margin-top: -10px; color: hotpink; font-size: 1em;">
-  Click on the cards to highlight the ones you’ve interacted with
-</p>
+  <p id="subheading">Click on the cards to highlight the ones you’ve interacted with</p>
   <h3 id="completion-rate">Full Deck: 0%</h3>
-   <div id="completion-popup" class="popup-hidden">
-  <div class="popup-inner">
-    <span id="close-popup">&times;</span>
-    <h2>🌟 Cata-Dex Complete! 🌟</h2>
-    <p>You have interacted with all the kitties.<br>
-    You are now appointed as a feline master!</p>
-  </div>
-</div>
+  <div id="completion-banner">🎉 You've completed your Cata-dex! You’re the ultimate Kitty Master! 🐾</div>
+
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const completionRate = document.getElementById('completion-rate');
-  const popup = document.getElementById('completion-popup');
-  const closeBtn = document.getElementById('close-popup');
-  const botGrid = document.getElementById('bot-grid');
+    document.addEventListener('DOMContentLoaded', () => {
+      const bots = [
+        { name: "Creed \"The Bleed\" Kross", type: "Good Kitty", image: "https://files.catbox.moe/8t7cw0.png" },
+        { name: "Turner Fox", type: "Good Kitty", image: "https://files.catbox.moe/x4xgem.png" },
+        { name: "Finn Callahan", type: "Good Kitty", image: "https://files.catbox.moe/83mb1o.png" },
+        { name: "Crew Payne", type: "Good Kitty", image: "https://files.catbox.moe/hkw0ax.png" },
+        { name: "Aiden Wolf", type: "Good Kitty", image: "https://files.catbox.moe/q97jbj.png" },
+        { name: "Holt Prescott", type: "Bad Kitty", image: "https://files.catbox.moe/lb1lc9.png" },
+        { name: "Revan Ledgar", type: "Bad Kitty", image: "https://files.catbox.moe/cx4o0r.png" }
+      ];
 
-  const bots = [
-    {
-      name: "Creed \"The Bleed\" Kross",
-      type: "Good Kitty",
-      image: "https://files.catbox.moe/8t7cw0.png"
-    },
-    {
-      name: "Turner Fox",
-      type: "Good Kitty",
-      image: "https://files.catbox.moe/x4xgem.png"
-    },
-    {
-      name: "Finn Callahan",
-      type: "Good Kitty",
-      image: "https://files.catbox.moe/83mb1o.png"
-    },
-    {
-      name: "Crew Payne",
-      type: "Good Kitty",
-      image: "https://files.catbox.moe/hkw0ax.png"
-    },
-    {
-      name: "Aiden Wolf",
-      type: "Good Kitty",
-      image: "https://files.catbox.moe/q97jbj.png"
-    },
-    {
-      name: "Holt Prescott",
-      type: "Bad Kitty",
-      image: "https://files.catbox.moe/lb1lc9.png"
-    },
-    {
-      name: "Revan Ledgar",
-      type: "Bad Kitty",
-      image: "https://files.catbox.moe/cx4o0r.png"
-    }
-  ];
+      const botGrid = document.getElementById('bot-grid');
+      const completionRate = document.getElementById('completion-rate');
+      const completionBanner = document.getElementById('completion-banner');
 
-  let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
+      let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
 
-  function updateCompletion() {
-    const percent = Math.round((interactedBots.length / bots.length) * 100);
-    completionRate.textContent = `Memory Completion: ${percent}%`;
+      function updateCompletion() {
+        const percent = Math.round((interactedBots.length / bots.length) * 100);
+        completionRate.textContent = `Full Deck: ${percent}%`;
 
-    if (percent === 100) {
-      popup.classList.remove('popup-hidden');
-    }
-  }
-
-  bots.forEach(bot => {
-    const card = document.createElement('div');
-    card.className = 'bot-card';
-
-    const hasInteracted = interactedBots.includes(bot.name);
-    if (hasInteracted) card.classList.add('interacted');
-
-    card.innerHTML = `
-      <img src="${bot.image}" alt="${bot.name}">
-      <h3>${bot.name}</h3>
-      <p>${bot.type}</p>
-    `;
-
-    card.addEventListener('click', () => {
-      if (!card.classList.contains('interacted')) {
-        card.classList.add('interacted');
-        interactedBots.push(bot.name);
-      } else {
-        card.classList.remove('interacted');
-        interactedBots = interactedBots.filter(name => name !== bot.name);
+        if (percent === 100) {
+          completionBanner.style.display = 'block';
+        } else {
+          completionBanner.style.display = 'none';
+        }
       }
 
-      localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+      bots.forEach(bot => {
+        const card = document.createElement('div');
+        card.className = 'bot-card';
+
+        const hasInteracted = interactedBots.includes(bot.name);
+        if (hasInteracted) card.classList.add('interacted');
+
+        card.innerHTML = `
+          <img src="${bot.image}" alt="${bot.name}">
+          <h3>${bot.name}</h3>
+          <p>${bot.type}</p>
+        `;
+
+        card.addEventListener('click', () => {
+          if (!card.classList.contains('interacted')) {
+            card.classList.add('interacted');
+            interactedBots.push(bot.name);
+          } else {
+            card.classList.remove('interacted');
+            interactedBots = interactedBots.filter(name => name !== bot.name);
+          }
+
+          localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+          updateCompletion();
+        });
+
+        botGrid.appendChild(card);
+      });
+
       updateCompletion();
     });
-
-    botGrid.appendChild(card);
-  });
-
-  // Close popup handlers
-  closeBtn.addEventListener('click', () => {
-    popup.classList.add('popup-hidden');
-  });
-
-  popup.addEventListener('click', (e) => {
-    if (e.target.id === 'completion-popup') {
-      popup.classList.add('popup-hidden');
-    }
-  });
-
-  updateCompletion(); // Initial check
-});
-</script>
-
+  </script>
 </body>
 </html>
-
