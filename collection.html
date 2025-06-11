@@ -203,11 +203,11 @@ bots.forEach(bot => {
     document.getElementById('completion-popup').classList.remove('popup-hidden');
   }
 }
-document.getElementById('close-popup').addEventListener('click', () => {
+updateCompletion(); // 🔁 Load current progress on page start
+    document.getElementById('close-popup').addEventListener('click', () => {
   document.getElementById('completion-popup').classList.add('popup-hidden');
 });
 
-updateCompletion(); // 🔁 Load current progress on page start
   </script>
   <div id="completion-popup" class="popup-hidden">
   <div class="popup-inner">
