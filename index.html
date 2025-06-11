@@ -471,6 +471,12 @@ summonBtn.addEventListener('click', () => {
 popupClose.addEventListener('click', () => {
   popup.style.display = 'none';
 });
+let collected = JSON.parse(localStorage.getItem('collectedKitties')) || [];
+
+if (!collected.includes(chosenBot.name)) {
+  collected.push(chosenBot.name);
+  localStorage.setItem('collectedKitties', JSON.stringify(collected));
+}
 
 </script>
 
