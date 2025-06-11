@@ -8,7 +8,11 @@
       margin: 0;
       padding: 40px 20px;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#1c1c2b, #2e2e42);
+      background:
+    /* 1. transparent dark overlay */
+      linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)),
+    /* 2. your background image */
+      url('https://files.catbox.moe/q6r0pq.png') center/cover no-repeat;
       color: white;
       text-align: center;
     }
