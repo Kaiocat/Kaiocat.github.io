@@ -151,7 +151,7 @@
 
       function updateCompletion() {
         const percent = Math.round((interactedBots.length / bots.length) * 100);
-        completionRate.textContent = `Full Deck: ${percent}%`;
+        completionRate.textContent = `Completion Percentage: ${percent}%`;
 
         if (percent === 100) {
           completionBanner.style.display = 'block';
