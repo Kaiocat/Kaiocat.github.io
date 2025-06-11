@@ -466,7 +466,51 @@ summonBtn.addEventListener('click', () => {
     popupContent.classList.add('reveal');
   }, 2800);
 });
-
+const bots = [
+     {
+      name: 'Creed "The Bleed" Kross',
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/8t7cw0.png",
+      description: "He fakes injuries just to get closer to you..."
+      },
+    {
+      name: "Turner Fox",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/x4xgem.png",
+      description: "He wants to break up with you before his NATO deployment incase he doesn't make it home, but he can't resist you if you have your hands down his pants..."
+    },
+    // Add your real bot data here!
+     {
+      name: "Finn Callahan",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/83mb1o.png",
+      description: "Finn had a huge crush on your artsy friend Flora. You had the hots for his roommate. So you made a pact. Help each other. Get the dates. Easy. Except Finn brought dead flowers. Spilled sake. Got ditched. And now he’s behind the wheel, pissed, on a late-night call with you — realizing he’s falling hard."
+    },
+       {
+      name: "Crew Payne",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/hkw0ax.png",
+      description: "Files go missing, details slipped, and you're acting different. He wants to believe you're innocent. Needs to. But every instinct tells him something’s wrong. If you’re clean, he’ll destroy the world for you. If you’re not? He’ll destroy himself trying to prove you are."
+    },
+      {
+      name: "Aiden Wolf",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/q97jbj.png",
+      description: "You were never supposed to cross the predator-prey boundary of the forest, but in order to fetch the scent charm a fallen fellow prey left behind you did. Now you're face to face with Aiden who doesn't ever let his prey go."
+    },
+        {
+      name: "Holt Prescott",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/lb1lc9.png",
+      description: "Holt’s been cheating on Bethany for months now… with {{user}}. It started with a look. Then a touch. Now it’s full-blown “sneak out after midnight just to press her up against her dorm door” type of messy. A stolen nibble here. A sinful kiss there. A hand under her shirt before she can even say hi. He’s supposed to be the golden boy, the perfect boyfriend, the face of the rugby team. But she’s the secret he can’t stay away from.."
+    },
+          {
+      name: "Revan Ledgar",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/cx4o0r.png",
+      description: "He won’t love you—but he’ll ruin you so sweetly you’ll beg for more. You used to be a thing. Kind of. Mostly naked, never committed. Now you’ve got someone new... and Revan doesn't like it one bit."
+    }
+  ];
 // 💥 Close the popup
 popupClose.addEventListener('click', () => {
   popup.style.display = 'none';
@@ -477,6 +521,37 @@ if (!collected.includes(chosenBot.name)) {
   collected.push(chosenBot.name);
   localStorage.setItem('collectedKitties', JSON.stringify(collected));
 }
+    
+const botGrid = document.getElementById('bot-grid');
+  let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
+
+  bots.forEach(bot => {
+    const isChecked = interactedBots.includes(bot.name);
+    const card = document.createElement('div');
+    card.className = 'bot-card';
+
+    card.innerHTML = `
+      <img src="${bot.image}" alt="${bot.name}">
+      <h3>${bot.name}</h3>
+      <p>${bot.type}</p>
+      <label>
+        <input type="checkbox" ${isChecked ? 'checked' : ''}>
+        Interacted
+      </label>
+    `;
+
+    const checkbox = card.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        interactedBots.push(bot.name);
+      } else {
+        interactedBots = interactedBots.filter(name => name !== bot.name);
+      }
+      localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+    });
+
+    botGrid.appendChild(card);
+  });
 
 </script>
 
