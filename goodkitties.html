@@ -5,7 +5,12 @@
   <title>Good Kitties</title>
   <style>
     body {
-      background: #1a1a1a url('https://files.catbox.moe/x5ctgc.png') no-repeat center center fixed;
+      background:
+    /* 1. transparent dark overlay */
+    linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)),
+    /* 2. your background image */
+    url('https://files.catbox.moe/x5ctgc.png') center/cover no-repeat;
+    overflow-x: hidden;
       background-size: cover;
       color: floralwhite;
       font-family: 'Segoe UI', sans-serif;
