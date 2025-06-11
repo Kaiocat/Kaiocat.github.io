@@ -59,9 +59,12 @@
 <body>
 
   <h2>Your Kitty Collection</h2>
+  <h3 id="completion-rate">Full Deck: 0%</h3>
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
+    const completionRate = document.getElementById('completion-rate');
+
     const bots = [
       {
         name: "Creed \"The Bleed\" Kross",
@@ -116,7 +119,7 @@ bots.forEach(bot => {
     <p>${bot.type}</p>
   `;
 
-  card.addEventListener('click', () => {
+    card.addEventListener('click', () => {
     if (!card.classList.contains('interacted')) {
       card.classList.add('interacted');
       interactedBots.push(bot.name);
@@ -126,10 +129,16 @@ bots.forEach(bot => {
     }
 
     localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+    updateCompletion();
   });
 
   botGrid.appendChild(card);
 });
+    function updateCompletion() {
+  const percent = Math.round((interactedBots.length / bots.length) * 100);
+  completionRate.textContent = `Memory Completion: ${percent}%`;
+}
+updateCompletion(); // 🔁 Load current progress on page start
   </script>
 
 </body>
