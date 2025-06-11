@@ -5,16 +5,16 @@
   <title>Cata-dex</title>
   <style>
     body {
-      margin: 0;
-      padding: 40px 20px;
-      font-family: 'Segoe UI', sans-serif;
-      background:
-    /* 1. transparent dark overlay */
-      linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)),
-    /* 2. your background image */
-      url('https://files.catbox.moe/q6r0pq.png') center/cover no-repeat;
-      color: white;
-      text-align: center;
+      body {
+  min-height: 100vh; /* ensures body stretches full screen */
+  margin: 0;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: floralwhite;
+  /* 1. transparent dark overlay */
+ background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('https://files.catbox.moe/q6r0pq.png') no-repeat center center fixed;
+  background-size: cover;
     }
 
     h2 {
