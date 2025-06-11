@@ -132,103 +132,105 @@
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
-    const completionRate = document.getElementById('completion-rate');
-
-    const bots = [
-      {
-        name: "Creed \"The Bleed\" Kross",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/8t7cw0.png"
-      },
-      {
-        name: "Turner Fox",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/x4xgem.png"
-      },
-      {
-        name: "Finn Callahan",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/83mb1o.png"
-      },
-      {
-        name: "Crew Payne",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/hkw0ax.png"
-      },
-      {
-        name: "Aiden Wolf",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/q97jbj.png"
-      },
-      {
-        name: "Holt Prescott",
-        type: "Bad Kitty",
-        image: "https://files.catbox.moe/lb1lc9.png"
-      },
-      {
-        name: "Revan Ledgar",
-        type: "Bad Kitty",
-        image: "https://files.catbox.moe/cx4o0r.png"
-      }
-    ];
-
-  const botGrid = document.getElementById('bot-grid');
-let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
-
-bots.forEach(bot => {
-  const card = document.createElement('div');
-  card.className = 'bot-card';
-
-  const hasInteracted = interactedBots.includes(bot.name);
-  if (hasInteracted) card.classList.add('interacted');
-
-  card.innerHTML = `
-    <img src="${bot.image}" alt="${bot.name}">
-    <h3>${bot.name}</h3>
-    <p>${bot.type}</p>
-  `;
-
-    card.addEventListener('click', () => {
-    if (!card.classList.contains('interacted')) {
-      card.classList.add('interacted');
-      interactedBots.push(bot.name);
-    } else {
-      card.classList.remove('interacted');
-      interactedBots = interactedBots.filter(name => name !== bot.name);
-    }
-
-    localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
-    updateCompletion();
-  });
-
-  botGrid.appendChild(card);
-});
-    function updateCompletion() {
-  const percent = Math.round((interactedBots.length / bots.length) * 100);
-  completionRate.textContent = `Memory Completion: ${percent}%`;
-
-  if (percent === 100) {
-    document.getElementById('completion-popup').classList.remove('popup-hidden');
-  }
-}
-updateCompletion(); // 🔁 Load current progress on page start
-document.getElementById('completion-popup').addEventListener('click', (e) => {
-  if (e.target.id === 'completion-popup') {
-    document.getElementById('completion-popup').classList.add('popup-hidden');
-  }
-});
 document.addEventListener('DOMContentLoaded', () => {
-  // ✅ This code only runs after the full HTML has loaded
+  const completionRate = document.getElementById('completion-rate');
   const popup = document.getElementById('completion-popup');
   const closeBtn = document.getElementById('close-popup');
+  const botGrid = document.getElementById('bot-grid');
 
+  const bots = [
+    {
+      name: "Creed \"The Bleed\" Kross",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/8t7cw0.png"
+    },
+    {
+      name: "Turner Fox",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/x4xgem.png"
+    },
+    {
+      name: "Finn Callahan",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/83mb1o.png"
+    },
+    {
+      name: "Crew Payne",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/hkw0ax.png"
+    },
+    {
+      name: "Aiden Wolf",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/q97jbj.png"
+    },
+    {
+      name: "Holt Prescott",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/lb1lc9.png"
+    },
+    {
+      name: "Revan Ledgar",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/cx4o0r.png"
+    }
+  ];
+
+  let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
+
+  function updateCompletion() {
+    const percent = Math.round((interactedBots.length / bots.length) * 100);
+    completionRate.textContent = `Memory Completion: ${percent}%`;
+
+    if (percent === 100) {
+      popup.classList.remove('popup-hidden');
+    }
+  }
+
+  bots.forEach(bot => {
+    const card = document.createElement('div');
+    card.className = 'bot-card';
+
+    const hasInteracted = interactedBots.includes(bot.name);
+    if (hasInteracted) card.classList.add('interacted');
+
+    card.innerHTML = `
+      <img src="${bot.image}" alt="${bot.name}">
+      <h3>${bot.name}</h3>
+      <p>${bot.type}</p>
+    `;
+
+    card.addEventListener('click', () => {
+      if (!card.classList.contains('interacted')) {
+        card.classList.add('interacted');
+        interactedBots.push(bot.name);
+      } else {
+        card.classList.remove('interacted');
+        interactedBots = interactedBots.filter(name => name !== bot.name);
+      }
+
+      localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+      updateCompletion();
+    });
+
+    botGrid.appendChild(card);
+  });
+
+  // Close popup handlers
   closeBtn.addEventListener('click', () => {
     popup.classList.add('popup-hidden');
   });
 
-  // run your updateCompletion() here
+  popup.addEventListener('click', (e) => {
+    if (e.target.id === 'completion-popup') {
+      popup.classList.add('popup-hidden');
+    }
+  });
+
+  updateCompletion(); // Initial check
 });
-  </script>
+</script>
+
 </body>
 </html>
 
