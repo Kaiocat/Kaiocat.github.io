@@ -248,21 +248,14 @@ body::before {
   50% { border-color: hotpink }
 }
 .summon-popup {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  overflow: hidden;
-  display: flex; /* Important: this ensures it's centered */
-  flex-direction: column; /* So sparkles and popup-content stack */
 }
-
 @keyframes drawCard {
   0% {
     transform: rotateY(90deg) scale(0.8);
@@ -292,30 +285,6 @@ body::before {
   transform: rotateY(90deg); /* initial state */
   opacity: 0;
   animation: drawCardSpin 1.5s ease-out forwards;
-  #sparkles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-
-  background: radial-gradient(circle at center, #ffffffcc 0%, transparent 70%);
-  opacity: 0;
-  animation: sparklePoof 1s ease forwards;
-  animation-delay: 2.6s; /* Match your spin timing */
-}
-
-@keyframes sparklePoof {
-  0%   { opacity: 0; transform: scale(0.8); }
-  30%  { opacity: 1; transform: scale(1.1); }
-  100% { opacity: 0; transform: scale(1.5); }
-}
-
-.popup-content {
-  position: relative;
-}
 }
 
 #popup-close {
@@ -401,9 +370,8 @@ function toggleAbout() {
   <span class="summon-label">Summon your kitty</span>
   <img src="https://files.catbox.moe/szk9no.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
 </div>
-
+  
 <div class="summon-popup" id="summon-popup">
-  <div id="sparkles"></div> <!-- This is HTML content -->
   <div class="popup-content">
     <span id="popup-close">&times;</span>
     <img id="bot-image" src="" alt="Summoned Bot">
@@ -480,7 +448,10 @@ summonBtn.addEventListener('click', () => {
   popupContent.style.animation = 'none';
   void popupContent.offsetWidth;
   popupContent.style.animation = 'drawCardSpin 2.8s ease-out forwards';
+
+  popup.style.display = 'flex';
 });
+
   popupClose.addEventListener('click', () => {
     popup.style.display = 'none';
   });
