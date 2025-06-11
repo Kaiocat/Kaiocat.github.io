@@ -266,9 +266,9 @@ body::before {
     opacity: 1;
   }
 }
-  @keyframes drawCardSpin {
+ @keyframes drawCardSpin {
   0%   { transform: rotateY(0deg) scale(0.8); opacity: 0; }
-  80%  { transform: rotateY(1080deg) scale(1); opacity: 1; }
+  80%  { transform: rotateY(1080deg) scale(1.05); opacity: 1; }
   100% { transform: rotateY(1080deg) scale(1); opacity: 1; }
 }
 
@@ -447,7 +447,7 @@ summonBtn.addEventListener('click', () => {
   const popupContent = document.querySelector('.popup-content');
   popupContent.style.animation = 'none';
   void popupContent.offsetWidth;
-  popupContent.style.animation = 'drawCardSpin 1.5s ease-out forwards';
+  popupContent.style.animation = 'drawCardSpin 2.8s ease-out forwards';
 
   popup.style.display = 'flex';
 });
