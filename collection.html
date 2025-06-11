@@ -212,15 +212,22 @@ bots.forEach(bot => {
   }
 }
 updateCompletion(); // 🔁 Load current progress on page start
-    document.getElementById('close-popup').addEventListener('click', () => {
-  document.getElementById('completion-popup').classList.add('popup-hidden');
-});
 document.getElementById('completion-popup').addEventListener('click', (e) => {
   if (e.target.id === 'completion-popup') {
     document.getElementById('completion-popup').classList.add('popup-hidden');
   }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // ✅ This code only runs after the full HTML has loaded
+  const popup = document.getElementById('completion-popup');
+  const closeBtn = document.getElementById('close-popup');
 
+  closeBtn.addEventListener('click', () => {
+    popup.classList.add('popup-hidden');
+  });
+
+  // run your updateCompletion() here
+});
   </script>
 </body>
 </html>
