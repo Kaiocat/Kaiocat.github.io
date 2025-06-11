@@ -483,18 +483,34 @@ summonBtn.addEventListener('click', () => {
   }, 2800);
   summonBtn.addEventListener('click', () => {
   if (savedData.count >= summonLimit) {
-    alert("You've used all your summons for today! Come back tomorrow 🐾✨");
-    return;
+    alert("You've used all your summons for today! Come back tomorrow 💫");
+    return; // 🔥 This is CRITICAL — it stops the popup from opening
   }
 
+  // ✨ Proceed with summon logic
   savedData.count++;
   localStorage.setItem('summonData', JSON.stringify(savedData));
 
-  // update summon counter UI if you have one:
   document.getElementById('summon-remaining').textContent = `Summons left: ${summonLimit - savedData.count}`;
 
-  // 🎴 normal summon logic here...
+  const chosenBot = bots[Math.floor(Math.random() * bots.length)];
+  botImg.src = chosenBot.image;
+  botName.textContent = chosenBot.name;
+  botType.textContent = `Type: ${chosenBot.type}`;
+  botDesc.textContent = chosenBot.description;
+
+  popupContent.classList.remove('reveal');
+  popupContent.style.animation = 'none';
+  void popupContent.offsetWidth;
+  popupContent.style.animation = 'drawCardSpin 2.8s ease-out forwards';
+
+  popup.style.display = 'flex';
+
+  setTimeout(() => {
+    popupContent.classList.add('reveal');
+  }, 2800);
 });
+
 });
 
 // 💥 Close the popup
