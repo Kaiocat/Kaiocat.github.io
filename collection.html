@@ -207,6 +207,11 @@ updateCompletion(); // 🔁 Load current progress on page start
     document.getElementById('close-popup').addEventListener('click', () => {
   document.getElementById('completion-popup').classList.add('popup-hidden');
 });
+document.getElementById('completion-popup').addEventListener('click', (e) => {
+  if (e.target.id === 'completion-popup') {
+    document.getElementById('completion-popup').classList.add('popup-hidden');
+  }
+});
 
   </script>
   <div id="completion-popup" class="popup-hidden">
