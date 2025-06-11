@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Kitty Memory Book</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#1c1c2b, #2e2e42);
+      color: white;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .bot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .bot-card {
+      border: 2px solid hotpink;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 12px;
+      width: 160px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .bot-card:hover {
+      transform: scale(1.05);
+    }
+
+    .bot-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .bot-card input[type="checkbox"] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📓 Your Kitty Memory Book</h2>
+  <div class="bot-grid" id="bot-grid"></div>
+
+  <script>
+    const bots = [
+      {
+        name: "Creed \"The Bleed\" Kross",
+        type: "Good Kitty",
+        image: "https://files.catbox.moe/8t7cw0.png"
+      },
+      {
+        name: "Turner Fox",
+        type: "Good Kitty",
+        image: "https://files.catbox.moe/x4xgem.png"
+      },
+      {
+        name: "Finn Callahan",
+        type: "Good Kitty",
+        image: "https://files.catbox.moe/83mb1o.png"
+      },
+      {
+        name: "Crew Payne",
+        type: "Good Kitty",
+        image: "https://files.catbox.moe/hkw0ax.png"
+      },
+      {
+        name: "Aiden Wolf",
+        type: "Good Kitty",
+        image: "https://files.catbox.moe/q97jbj.png"
+      },
+      {
+        name: "Holt Prescott",
+        type: "Bad Kitty",
+        image: "https://files.catbox.moe/lb1lc9.png"
+      },
+      {
+        name: "Revan Ledgar",
+        type: "Bad Kitty",
+        image: "https://files.catbox.moe/cx4o0r.png"
+      }
+    ];
+
+    const botGrid = document.getElementById('bot-grid');
+    let interactedBots = JSON.parse(localStorage.getItem('interactedBots')) || [];
+
+    bots.forEach(bot => {
+      const isChecked = interactedBots.includes(bot.name);
+      const card = document.createElement('div');
+      card.className = 'bot-card';
+
+      card.innerHTML = `
+        <img src="${bot.image}" alt="${bot.name}">
+        <h3>${bot.name}</h3>
+        <p>${bot.type}</p>
+        <label>
+          <input type="checkbox" ${isChecked ? 'checked' : ''}>
+          Interacted
+        </label>
+      `;
+
+      const checkbox = card.querySelector('input[type="checkbox"]');
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          interactedBots.push(bot.name);
+        } else {
+          interactedBots = interactedBots.filter(name => name !== bot.name);
+        }
+        localStorage.setItem('interactedBots', JSON.stringify(interactedBots));
+      });
+
+      botGrid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
 
