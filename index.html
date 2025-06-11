@@ -381,6 +381,7 @@ function toggleAbout() {
 <div class="summon-popup" id="summon-popup">
   <div class="popup-content" id="popup-content">
     <div class="card-face" id="card-face">
+      <p id="summon-remaining">Summons left: 3</p>
       <span id="popup-close">&times;</span> <!-- ✅ only one close button -->
       <img id="bot-image" src="" alt="Summoned Bot">
       <h2 id="bot-name"></h2>
@@ -390,6 +391,21 @@ function toggleAbout() {
   </div>
 </div>
   <script>
+   const summonLimit = 3;
+const today = new Date().toLocaleDateString(); // e.g., "6/10/2025"
+
+// Retrieve saved data
+let savedData = JSON.parse(localStorage.getItem('summonData')) || {
+  date: today,
+  count: 0
+};
+
+// Reset if it's a new day
+if (savedData.date !== today) {
+  savedData = { date: today, count: 0 };
+  localStorage.setItem('summonData', JSON.stringify(savedData));
+}
+
   const bots = [
      {
       name: 'Creed "The Bleed" Kross',
@@ -465,12 +481,27 @@ summonBtn.addEventListener('click', () => {
   setTimeout(() => {
     popupContent.classList.add('reveal');
   }, 2800);
+  summonBtn.addEventListener('click', () => {
+  if (savedData.count >= summonLimit) {
+    alert("You've used all your summons for today! Come back tomorrow 🐾✨");
+    return;
+  }
+
+  savedData.count++;
+  localStorage.setItem('summonData', JSON.stringify(savedData));
+
+  // update summon counter UI if you have one:
+  document.getElementById('summon-remaining').textContent = `Summons left: ${summonLimit - savedData.count}`;
+
+  // 🎴 normal summon logic here...
+});
 });
 
 // 💥 Close the popup
 popupClose.addEventListener('click', () => {
   popup.style.display = 'none';
 });
+document.getElementById('summon-remaining').textContent = `Summons left: ${summonLimit - savedData.count}`;
 
 </script>
 
