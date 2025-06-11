@@ -121,6 +121,14 @@
   Click on the cards to highlight the ones you’ve interacted with
 </p>
   <h3 id="completion-rate">Full Deck: 0%</h3>
+   <div id="completion-popup" class="popup-hidden">
+  <div class="popup-inner">
+    <span id="close-popup">&times;</span>
+    <h2>🌟 Cata-Dex Complete! 🌟</h2>
+    <p>You have interacted with all the kitties.<br>
+    You are now appointed as a feline master!</p>
+  </div>
+</div>
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
@@ -214,14 +222,6 @@ document.getElementById('completion-popup').addEventListener('click', (e) => {
 });
 
   </script>
-  <div id="completion-popup" class="popup-hidden">
-  <div class="popup-inner">
-    <span id="close-popup">&times;</span>
-    <h2>🌟 Cata-Dex Complete! 🌟</h2>
-    <p>You have interacted with all the kitties.<br>
-    You are now appointed as a feline master!</p>
-  </div>
-</div>
 </body>
 </html>
 
