@@ -53,7 +53,18 @@
   background-color: rgba(255, 105, 180, 0.2);
   border-color: deeppink;
 }
+#subheading {
+  font-style: italic;
+  font-size: 1em;
+  color: hotpink;
+  margin-bottom: 10px;
+  animation: glowText 2s infinite alternate;
+}
 
+@keyframes glowText {
+  from { text-shadow: 0 0 5px deeppink; }
+  to   { text-shadow: 0 0 15px hotpink; }
+}
   </style>
 </head>
 <body>
