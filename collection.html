@@ -88,10 +88,29 @@
       from { text-shadow: 0 0 10px deeppink; }
       to   { text-shadow: 0 0 25px magenta; }
     }
+    #home-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 16px;
+  background-color: hotpink;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+#home-button:hover {
+  background-color: deeppink;
+}
+
   </style>
 </head>
 <body>
-
+  <button id="home-button">⬅️ Home</button>
   <h2>Cata-dex</h2>
   <p id="subheading">Click on the cards to highlight the ones you’ve interacted with</p>
   <h3 id="completion-rate">Full Deck: 0%</h3>
@@ -100,6 +119,10 @@
   <div class="bot-grid" id="bot-grid"></div>
 
   <script>
+  document.getElementById('home-button').onclick = () => {
+    window.location.href = 'index.html'; // Update if your homepage URL differs
+  };
+
     document.addEventListener('DOMContentLoaded', () => {
       const bots = [
         { name: "Creed \"The Bleed\" Kross", type: "Good Kitty", image: "https://files.catbox.moe/8t7cw0.png" },
@@ -159,6 +182,7 @@
 
       updateCompletion();
     });
+    
   </script>
 </body>
 </html>
