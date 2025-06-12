@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post-Apocalyptic Verse</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 5%;
+      background: #0b0b0c url('your-dark-bg.jpg') center/cover no-repeat fixed;
+      font-family: 'Segoe UI', sans-serif;
+      color: #eaeaea;
+      overflow-x: hidden;
+    }
+
+    /* Back button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #1a1a1a;
+      color: #ff69b4;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 8px #ff69b4;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .back-btn:hover {
+      background-color: #ff69b4;
+      color: #0b0b0c;
+      box-shadow: 0 0 15px #fff, 0 0 25px #ff69b4;
+    }
+
+    .back-btn::before {
+      content: "💖 ";
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #ff3e3e;
+      text-shadow: 0 0 12px #ff3e3e, 0 0 24px #ff0000;
+      margin-bottom: 60px;
+    }
+
+    .lore-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .lore-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .lore-image {
+      flex: 1;
+      min-width: 280px;
+      max-width: 400px;
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease;
+    }
+
+    .lore-image img {
+      width: 100%;
+      border-radius: 16px;
+      border: 3px solid #ff3e3e;
+      box-shadow: 0 0 20px #ff3e3e;
+    }
+
+    .lore-image:hover {
+      transform: rotateY(6deg);
+    }
+
+    .lore-text {
+      flex: 1;
+      min-width: 280px;
+      max-width: 600px;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: rgba(17, 17, 17, 0.7);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #ff69b4;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+    }
+
+    .lore-text strong {
+      color: #ff69b4;
+    }
+
+    @media (max-width: 768px) {
+      .lore-block {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">Go back</a>
+
+  <h1 data-aos="fade-down">POST-APOCALYPTIC VERSE</h1>
+
+  <!-- BLOCK 1 -->
+  <div class="lore-block" data-aos="fade-up">
+    <div class="lore-image">
+      <img src="image1.gif" alt="Scene 1">
+    </div>
+    <div class="lore-text">
+      <p><strong>The world didn’t just fall.</strong> It imploded. Lights went out. Networks collapsed. The screams were lost in static.</p>
+      <p>The old world was digital. Fragile. And when it broke, it left behind monsters — not just mutants, but people wired to survive at any cost.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 2 -->
+  <div class="lore-block" data-aos="fade-up">
+    <div class="lore-image">
+      <img src="image2.gif" alt="Scene 2">
+    </div>
+    <div class="lore-text">
+      <p><strong>Salvagers</strong> scavenge tech from rusting towers. They say there’s AI still running deep underground — rogue programs dreaming in binary, too smart to shut off, too broken to save.</p>
+      <p>One of them is calling your name.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 -->
+  <div class="lore-block" data-aos="fade-up">
+    <div class="lore-image">
+      <img src="image3.gif" alt="Scene 3">
+    </div>
+    <div class="lore-text">
+      <p><strong>The Dustlands</strong> are more than desert. They’re memory. Places glitch, time loops, people forget they’ve already died there.</p>
+      <p>You don’t travel the Dustlands without a tether. Or a death wish.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 -->
+  <div class="lore-block" data-aos="fade-up">
+    <div class="lore-image">
+      <img src="image4.gif" alt="Scene 4">
+    </div>
+    <div class="lore-text">
+      <p><strong>The final signal</strong> plays on loop: a voice whispering coordinates, begging someone to listen. No one knows where it’s coming from.</p>
+      <p>Maybe it’s just an echo. Or maybe it’s the end. Or the beginning.</p>
+    </div>
+  </div>
+
+  <!-- Scroll animation script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>
+
