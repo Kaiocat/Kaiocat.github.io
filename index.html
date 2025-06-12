@@ -1,346 +1,487 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaio Konstruct</title>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet" />
-  <style>
-    html, body {
-      min-height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: floralwhite;
-      background: linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('https://files.catbox.moe/at9l9z.png') center/cover no-repeat;
-      overflow-x: hidden;
-      text-align: center;
-    }
+<style>
+html, body {
+  min-height: 100vh; /* ensures body stretches full screen */
+  margin: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: floralwhite;
+  text-align: center;
+  background:
+    /* 1. transparent dark overlay */
+    linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)),
+    /* 2. your background image */
+    url('https://files.catbox.moe/at9l9z.png') center/cover no-repeat;
+  overflow-x: hidden;
+}
 
-    .background-image {
-      position: fixed;
-      top: 10px;
-      left: 20px;
-      width: 100vw;
-      height: 100vh;
-      background-image: url('https://files.catbox.moe/at9l9z.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -3;
-      opacity: 0.35;
-    }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -2;
+  pointer-events: none;
+}
 
-    header {
-      padding: 80px 20px 40px;
-      animation: fadeIn 1s ease-in-out;
-    }
+  .background-image {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://files.catbox.moe/at9l9z.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -3; /* BELOW overlay */
+  opacity: 0.35; /* nice balance — visible, but not overpowering */
+}
 
-    h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      color: #ff69b4;
-      animation: pulseGlow 4s ease-in-out infinite;
-      text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4, 2px 2px 4px #ff1493, -2px -2px 4px #ff1493;
-    }
+  header {
+    padding: 80px 20px 40px;
+    animation: fadeIn 1s ease-in-out;
+  }
 
-    @keyframes pulseGlow {
-      0%, 100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
-      50% { text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff69b4; }
-    }
+  h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ff69b4;
+    position: relative;
+    display: inline-block;
+    animation: pulseGlow 4s ease-in-out infinite;
+    text-shadow:
+      0 0 15px #ff69b4,
+      0 0 30px #ff69b4,
+      2px 2px 4px #ff1493,
+      -2px -2px 4px #ff1493;
+  }
 
-    nav {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
     }
+    50% {
+      text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff69b4;
+    }
+  }
 
-    nav a {
-      text-decoration: none;
-      padding: 14px 28px;
-      font-weight: bold;
-      border-radius: 40px;
-      background: #773344;
-      color: floralwhite;
-      border: 2px solid #ff69b4;
-      box-shadow: 0 0 10px #ff69b4;
-      transition: all 0.3s ease;
-      width: 180px;
-      text-align: center;
-      letter-spacing: 1px;
-      text-shadow: 0 0 4px #ff69b4;
-    }
+  .tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
 
-    nav a:hover {
-      background-color: #ff69b4;
-      color: #1a1a1a;
-      box-shadow: 0 0 10px #fff, 0 0 25px #ff69b4, inset 0 0 10px #fff;
-      transform: scale(1.05);
-    }
+  nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
 
-    .section-label {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 40px;
-      color: floralwhite;
-      text-shadow: 0 0 6px #ff69b4;
-    }
+  nav a {
+    text-decoration: none;
+    padding: 14px 28px;
+    font-weight: bold;
+    border-radius: 40px;
+    background: #773344;
+    color: floralwhite;
+    border: 2px solid #ff69b4;
+    box-shadow: 0 0 10px #ff69b4;
+    transition: all 0.3s ease;
+    width: 180px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px #ff69b4;
+    cursor: pointer;
+  }
 
-    .pfp-wrapper {
-      max-width: 500px;
-      margin: 0 auto 40px;
-    }
+  nav a:hover {
+    background-color: #ff69b4;
+    color: #1a1a1a;
+    box-shadow: 0 0 10px #fff, 0 0 25px #ff69b4, inset 0 0 10px #fff;
+    transform: scale(1.05);
+  }
 
-    .profile-pic {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border: 4px solid #4b1e22;
-      box-shadow: 0 0 20px #ff69b4;
-      mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-    }
+  a.redirect {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 
-    .dropdown-toggle {
-      margin: 20px auto;
-      padding: 10px 24px;
-      font-weight: bold;
-      border-radius: 20px;
-      border: none;
-      background-color: floralwhite;
-      color: #5c4033;
-      box-shadow: 0 0 10px #ff69b4;
-      cursor: pointer;
-      animation: subtlePulse 4s ease-in-out infinite;
-    }
+  a.redirect:hover {
+    color: floralwhite;
+    text-decoration: underline;
+  }
 
-    .dropdown-content {
-      display: none;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #1a1a1a;
-      border: 2px solid #5c4033;
-      box-shadow: 0 0 20px #ff69b4;
-      border-radius: 12px;
-      text-align: left;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    @keyframes subtlePulse {
-      0%, 100% { box-shadow: 0 0 10px #ff69b4; }
-      50% { box-shadow: 0 0 20px #ffb6c1; }
-    }
+  .pfp-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
-    .summon-wrapper {
-      position: fixed;
-      bottom: 10px;
-      right: 20px;
-      z-index: 999;
-      text-align: center;
-    }
+  .profile-pic {
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border: 4px solid #4b1e22;
+    box-shadow: 0 0 20px #ff69b4;
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  }
 
-    .summon-label {
-      font-family: 'UnifrakturCook', cursive;
-      font-size: 22px;
-      font-weight: bold;
-      color: #ff4ecb;
-      text-shadow: 0 0 8px #cc2288, 0 0 12px #ff4ecb, 0 0 18px #ff70d9;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
+  .pfp-wrapper {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    margin: 0 auto 40px;
+    overflow: visible;
+    isolation: isolate;
+  }
 
-    .summon-wrapper:hover .summon-label {
-      opacity: 1;
-    }
+  .dropdown-toggle {
+    display: block;
+    margin: 20px auto 10px auto;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    background-color: floralwhite;
+    color: #5c4033;
+    box-shadow: 0 0 10px #ff69b4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: subtlePulse 4s ease-in-out infinite;
+  }
 
-    .magic-circle {
-      max-width: 200px;
-      height: auto;
-      cursor: pointer;
-      animation: floaty 3s ease-in-out infinite;
-    }
+  .dropdown-toggle:hover {
+    animation: wiggle 0.5s ease-in-out;
+    box-shadow: 0 0 15px #ff69b4, 0 0 25px #ffb6c1;
+  }
 
-    @keyframes floaty {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
+  .dropdown-content {
+    display: none;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 2px solid #5c4033;
+    box-shadow: 0 0 20px #ff69b4;
+    border-radius: 12px;
+  }
 
-    .summon-popup {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+  @keyframes subtlePulse {
+    0%, 100% { box-shadow: 0 0 10px #ff69b4; }
+    50% { box-shadow: 0 0 20px #ffb6c1; }
+  }
 
-    .popup-content {
-      background: #1a001f;
-      border: 2px solid hotpink;
-      padding: 20px;
-      max-width: 300px;
-      color: white;
-      border-radius: 12px;
-      box-shadow: 0 0 25px #ff99cc;
-      position: relative;
-      animation: drawCardSpin 1.5s ease-out forwards;
-    }
+  .section-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: floralwhite;
+    text-shadow: 0 0 6px #ff69b4;
+  }
+  
+.summon-wrapper {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 999;
+  text-align: center;
+}
 
-    @keyframes drawCardSpin {
-      0%   { transform: rotateY(0deg) scale(0.8); opacity: 0; }
-      80%  { transform: rotateY(1080deg) scale(1.05); opacity: 1; }
-      100% { transform: rotateY(1080deg) scale(1); opacity: 1; }
-    }
+/* Label ABOVE the image */
+.summon-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff4ecb;
+  text-shadow:
+  0 0 8px #cc2288,
+  0 0 12px #ff4ecb,
+  0 0 18px #ff70d9;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
 
-    #popup-close {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      color: #ff66cc;
-      font-size: 24px;
-      cursor: pointer;
-    }
+/* Only show label when hovering over image */
+.summon-wrapper:hover .summon-label {
+  opacity: 1;
+}
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      nav { flex-direction: column; gap: 20px; }
-    }
-  </style>
+.magic-circle {
+  max-width: 200px;
+  height: auto;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+/* On hover: Enlarge and glow */
+.magic-circle:hover {
+  transform: scale(1.1);
+}
+
+/* Blinking caret */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hotpink }
+}
+.summon-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+@keyframes drawCard {
+  0% {
+    transform: rotateY(90deg) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+ @keyframes drawCardSpin {
+  0%   { transform: rotateY(0deg) scale(0.8); opacity: 0; }
+  80%  { transform: rotateY(1080deg) scale(1.05); opacity: 1; }
+  100% { transform: rotateY(1080deg) scale(1); opacity: 1; }
+}
+
+.popup-content {
+  background: #1a001f;
+  border: 2px solid hotpink;
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #ff99cc;
+  position: relative;
+  transform: rotateY(90deg); /* initial state */
+  opacity: 0;
+  animation: drawCardSpin 1.5s ease-out forwards;
+}
+
+#popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #ff66cc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popup-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.card-face {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.popup-content.reveal .card-face {
+  opacity: 1;
+}
+</style>
+
 </head>
 <body>
   <div class="background-image"></div>
-  <header>
-    <div class="pfp-wrapper">
-      <img src="https://files.catbox.moe/atstan.png" alt="Kaio PFP" class="profile-pic">
-    </div>
 
-    <h1>Kaio Konstruct</h1>
-    <button class="dropdown-toggle" onclick="toggleAbout()">About + Info</button>
+    <header>
+  
+  <div class="pfp-wrapper">
+  <img src="https://files.catbox.moe/atstan.png" alt="Kaio PFP" class="profile-pic">
+</div>
 
-    <div id="aboutSection" class="dropdown-content">
-      <section>
-        <h2>About Kaiocat</h2>
-        <p>I'm an OCE university student studying cancer biology. This space is my creative escape. I deeply respect the bot-making community and its vulnerability.</p>
-      </section>
-      <section>
-        <h2>Notes & Warnings</h2>
-        <p>Some bots are red flags in bot-form. Read the warnings!</p>
-      </section>
-      <section>
-        <h2>FAQ</h2>
-        <ul>
-          <li><strong>Schedule:</strong> I upload a few times weekly (except during exams).</li>
-          <li><strong>Commissions:</strong> Not open yet—still learning!</li>
-          <li><strong>Smut:</strong> Yes. Tagged accordingly.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>💌 Contact</h2>
-        <p>Leave a comment on my bots—I read them all.</p>
-      </section>
-    </div>
 
-    <h2 class="section-label">View my bot-folio</h2>
-    <nav>
-      <a href="goodkitties.html">Good Kitties</a>
-      <a href="badkitties.html">Bad Kitties</a>
-      <a href="collection.html">Cata-Dex</a>
-    </nav>
-  </header>
+  <h1 class="typewriter">Kaio Konstruct</h1>
+<button class="dropdown-toggle" onclick="toggleAbout()">About + Info</button>
+      <div id="aboutSection" class="dropdown-content">
+  <section id="about">
+    <h2>About Kaiocat</h2>
+    <p>Hi, I'm sure you've read the J.ai about me if you're already in this deep. So I'll skip over the basics, I'm a OCE university student and initially
+    I was looking for a creative outlet. I stumbled on J.ai after working with C.ai and that was quite fun but it didn't give me the same customisation as J.ai so this
+    place quickly became my little corner and I've never looked back since. If you're interested in what I do, I basically do a lot of lab work and work with living tissues
+    so my job is to study cancer cells and hopefully that'll give us an insight into possible therapeutic targets. I really like the community here, and have a deep sense of
+    respect for each individual that is willing to share their bots because its a hard thing to do. You're essentially opening up your creative work for other people to
+    potentially criticise and I respect that, a lot.</p>
+  </section>
 
-  <!-- Summon Popup -->
-  <div class="summon-wrapper">
-    <span class="summon-label">Summon your kitty</span>
-    <img src="https://files.catbox.moe/szk9no.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
-  </div>
+  <section id="notes">
+    <h2>Notes & Warnings</h2>
+    <p>Not all of my bots are absolute green flags, some of them I'd quite literally go running in the opposite direction if I ever met them. So this is just a little reminder
+    to read and heed all trigger warnings just incase.</p>
+  </section>
 
-  <div class="summon-popup" id="summon-popup" role="dialog" aria-modal="true">
-    <div class="popup-content">
-      <span id="popup-close">&times;</span>
-      <img id="bot-image" src="" alt="Summoned Bot" style="width:100%; border-radius: 8px; margin-bottom: 10px;">
+  <section id="faq">
+    <h2>Possible questions</h2>
+    <ul>
+      <li><strong>Schedule</strong> → I upload a few times a week unless its exam period</li>
+      <li><strong>Suggestions/Commissions</strong> → For the time being, I'm not accepting any commissions. I don't feel confident enough in my
+      bot making to start accepting commissions because...well..what if it turns to shit?</li>
+      <li><strong>Smut?</strong> → Yes! They come with a little [NSFW first message] tag right under the initial quote.</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>💌 Contact</h2>
+    <p>You can always just drop a little comment under one of my bots to reach out :) I read every single comment and try to reply to all of them.</p>
+  </section>
+</div>
+      <h2 class="section-label">View my bot-folio</h2>
+
+  <nav>
+    <a href="goodkitties.html" title="View the wholesome bots">Good Kitties</a>
+    <a href="badkitties.html" title="View the redflag collection">Bad Kitties</a>
+    <a href="collection.html" title= "View Your Memory Book">Cata-Dex</a>
+  </nav>
+</div>
+
+</header>
+
+<script>
+function toggleAbout() {
+  const content = document.getElementById('aboutSection');
+  content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+  <!-- Somewhere before </body> -->
+<div class="summon-wrapper">
+  <span class="summon-label">Summon your kitty</span>
+  <img src="https://files.catbox.moe/szk9no.png" alt="Summon a Bot" class="magic-circle" id="summon-btn">
+</div>
+  
+<div class="summon-popup" id="summon-popup">
+  <div class="popup-content" id="popup-content">
+    <div class="card-face" id="card-face">
+      <span id="popup-close">&times;</span> <!-- ✅ only one close button -->
+      <img id="bot-image" src="" alt="Summoned Bot">
       <h2 id="bot-name"></h2>
       <p id="bot-type"></p>
       <p id="bot-desc"></p>
     </div>
   </div>
-
+</div>
   <script>
-    function toggleAbout() {
-      const content = document.getElementById('aboutSection');
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  const bots = [
+     {
+      name: 'Creed "The Bleed" Kross',
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/8t7cw0.png",
+      description: "He fakes injuries just to get closer to you..."
+      },
+    {
+      name: "Turner Fox",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/x4xgem.png",
+      description: "He wants to break up with you before his NATO deployment incase he doesn't make it home, but he can't resist you if you have your hands down his pants..."
+    },
+    // Add your real bot data here!
+     {
+      name: "Finn Callahan",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/83mb1o.png",
+      description: "Finn had a huge crush on your artsy friend Flora. You had the hots for his roommate. So you made a pact. Help each other. Get the dates. Easy. Except Finn brought dead flowers. Spilled sake. Got ditched. And now he’s behind the wheel, pissed, on a late-night call with you — realizing he’s falling hard."
+    },
+       {
+      name: "Crew Payne",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/hkw0ax.png",
+      description: "Files go missing, details slipped, and you're acting different. He wants to believe you're innocent. Needs to. But every instinct tells him something’s wrong. If you’re clean, he’ll destroy the world for you. If you’re not? He’ll destroy himself trying to prove you are."
+    },
+      {
+      name: "Aiden Wolf",
+      type: "Good Kitty",
+      image: "https://files.catbox.moe/q97jbj.png",
+      description: "You were never supposed to cross the predator-prey boundary of the forest, but in order to fetch the scent charm a fallen fellow prey left behind you did. Now you're face to face with Aiden who doesn't ever let his prey go."
+    },
+        {
+      name: "Holt Prescott",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/lb1lc9.png",
+      description: "Holt’s been cheating on Bethany for months now… with {{user}}. It started with a look. Then a touch. Now it’s full-blown “sneak out after midnight just to press her up against her dorm door” type of messy. A stolen nibble here. A sinful kiss there. A hand under her shirt before she can even say hi. He’s supposed to be the golden boy, the perfect boyfriend, the face of the rugby team. But she’s the secret he can’t stay away from.."
+    },
+          {
+      name: "Revan Ledgar",
+      type: "Bad Kitty",
+      image: "https://files.catbox.moe/cx4o0r.png",
+      description: "He won’t love you—but he’ll ruin you so sweetly you’ll beg for more. You used to be a thing. Kind of. Mostly naked, never committed. Now you’ve got someone new... and Revan doesn't like it one bit."
     }
+  ];
 
-    const bots = [
-      {
-        name: 'Creed "The Bleed" Kross',
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/8t7cw0.png",
-        description: "He fakes injuries just to get closer to you..."
-      },
-      {
-        name: "Turner Fox",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/x4xgem.png",
-        description: "He wants to break up with you before his NATO deployment..."
-      },
-      {
-        name: "Finn Callahan",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/83mb1o.png",
-        description: "Made a dating pact. Now he’s behind the wheel, pissed—and falling hard."
-      },
-      {
-        name: "Crew Payne",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/hkw0ax.png",
-        description: "He’ll destroy the world for you. Or himself trying to prove you're clean."
-      },
-      {
-        name: "Aiden Wolf",
-        type: "Good Kitty",
-        image: "https://files.catbox.moe/q97jbj.png",
-        description: "The forest is his territory. And now you're his."
-      },
-      {
-        name: "Holt Prescott",
-        type: "Bad Kitty",
-        image: "https://files.catbox.moe/lb1lc9.png",
-        description: "Golden boy Holt’s been cheating on Bethany—with {{user}}."
-      },
-      {
-        name: "Revan Ledgar",
-        type: "Bad Kitty",
-        image: "https://files.catbox.moe/cx4o0r.png",
-        description: "He won’t love you—but he’ll ruin you so sweetly you’ll beg for more."
-      }
-    ];
+ const summonBtn = document.getElementById('summon-btn');
+const popup = document.getElementById('summon-popup');
+const popupClose = document.getElementById('popup-close');
 
-    const summonBtn = document.getElementById('summon-btn');
-    const popup = document.getElementById('summon-popup');
-    const popupClose = document.getElementById('popup-close');
+const botImg = document.getElementById('bot-image');
+const botName = document.getElementById('bot-name');
+const botType = document.getElementById('bot-type');
+const botDesc = document.getElementById('bot-desc');
 
-    summonBtn.addEventListener('click', () => {
-      const chosenBot = bots[Math.floor(Math.random() * bots.length)];
-      document.getElementById('bot-image').src = chosenBot.image;
-      document.getElementById('bot-name').textContent = chosenBot.name;
-      document.getElementById('bot-type').textContent = `Type: ${chosenBot.type}`;
-      document.getElementById('bot-desc').textContent = chosenBot.description;
+const popupContent = document.getElementById('popup-content');
 
-      popup.style.display = 'flex';
+// 💬 Trigger the summon
+summonBtn.addEventListener('click', () => {
+  const chosenBot = bots[Math.floor(Math.random() * bots.length)];
+  botImg.src = chosenBot.image;
+  botName.textContent = chosenBot.name;
+  botType.textContent = `Type: ${chosenBot.type}`;
+  botDesc.textContent = chosenBot.description;
 
-      let collected = JSON.parse(localStorage.getItem('collectedKitties')) || [];
-      if (!collected.includes(chosenBot.name)) {
-        collected.push(chosenBot.name);
-        localStorage.setItem('collectedKitties', JSON.stringify(collected));
-      }
-    });
+  popupContent.classList.remove('reveal');
+  popupContent.style.animation = 'none';
+  void popupContent.offsetWidth;
+  popupContent.style.animation = 'drawCardSpin 2.8s ease-out forwards';
 
-    popupClose.addEventListener('click', () => {
-      popup.style.display = 'none';
-    });
-  </script>
+  popup.style.display = 'flex';
+
+  setTimeout(() => {
+    popupContent.classList.add('reveal');
+  }, 2800);
+});
+
+// 💥 Close the popup
+popupClose.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+let collected = JSON.parse(localStorage.getItem('collectedKitties')) || [];
+
+if (!collected.includes(chosenBot.name)) {
+  collected.push(chosenBot.name);
+  localStorage.setItem('collectedKitties', JSON.stringify(collected));
+}
+
+</script>
+
 </body>
+
 </html>
