@@ -143,40 +143,27 @@
   position: relative;
   width: 100%;
 }
-
 .overlay-title {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Creepster', cursive;
-  font-size: 2.2rem;
+  font-family: 'Black Ops One', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.8rem); /* Responsive scaling */
   color: #ff3e3e;
   text-shadow:
     0 0 5px #000,
     0 0 10px #ff3e3e,
-    0 2px 4px rgba(0, 0, 0, 0.6);
+    0 2px 6px rgba(0, 0, 0, 0.6);
   background: rgba(0, 0, 0, 0.35);
-  padding: 8px 20px;
-  border-radius: 6px;
-  letter-spacing: 2px;
+  padding: 10px 40px;
+  border-radius: 8px;
+  letter-spacing: 3px;
   pointer-events: none;
-  animation: bloodDrip 2.5s infinite ease-in-out alternate;
+  width: 110%;
+  text-align: center;
+  max-width: none;
 }
-
-/* BLOOD DRIP animation */
-@keyframes bloodDrip {
-  0% {
-    transform: translateX(-50%) translateY(0) scale(1);
-    text-shadow: 0 0 5px #000, 0 0 10px #ff3e3e;
-  }
-  100% {
-    transform: translateX(-50%) translateY(3px) scale(1.02);
-    text-shadow: 0 2px 8px #ff3e3e, 0 4px 14px #ff0000;
-  }
-}
-
-
   </style>
 </head>
 <body>
@@ -218,13 +205,12 @@
   </div>
 
   <!-- BLOCK 3 -->
-<div class="lore-block" data-aos="fade-up">
-  <div class="lore-image title-overlay">
-    <div class="img-wrapper">
-      <img src="https://files.catbox.moe/5uyzu5.png" alt="Scene 3">
-      <div class="overlay-title" data-aos="zoom-in">SEVEN</div>
-    </div>
+<div class="lore-image title-overlay">
+  <div class="img-wrapper">
+    <img src="https://files.catbox.moe/5uyzu5.png" alt="Scene 3">
+    <div class="overlay-title" data-aos="zoom-in">SE7EN</div>
   </div>
+</div>
     <div class="lore-text">
       <p><strong>Not immune. Not infected. Just burned different.</strong> Seven walked out of the crater that used to be Zone A. No convoy. No comrades. 
         Just ash and heat in his lungs. His skin melted, reformed. His eyes changed. They still glow in the dark. They say survivors like him were touched by 
