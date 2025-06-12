@@ -73,24 +73,24 @@
     }
 
     .lore-image {
-      flex: 1;
-      min-width: 280px;
-      max-width: 400px;
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease;
-    }
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  perspective: 1000px;
+}
 
-    .lore-image img {
-      width: 100%;
-      border-radius: 16px;
-      border: 3px solid #ff3e3e;
-      box-shadow: 0 0 20px #ff3e3e;
-      transition: transform 0.4s ease;
-    }
+.lore-image img {
+  width: 100%;
+  border-radius: 16px;
+  border: 3px solid #ff3e3e;
+  box-shadow: 0 0 20px #ff3e3e;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
 
-    .lore-image:hover {
-      transform: rotateY(6deg);
-    }
+.lore-image img:hover {
+  transform: rotateY(8deg) scale(1.03);
+}
 
     .lore-text {
       flex: 1;
@@ -114,6 +114,27 @@
         flex-direction: column !important;
       }
     }
+    .under-construction {
+  position: relative;
+  filter: grayscale(0.2) brightness(0.7);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 62, 62, 0.85);
+  color: black;
+  padding: 6px 16px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px #ff3e3e;
+  pointer-events: none;
+}
+
   </style>
 </head>
 <body>
@@ -168,10 +189,10 @@
   </div>
 
   <!-- BLOCK 4 -->
-  <div class="lore-block" data-aos="fade-up">
-    <div class="lore-image">
-      <img src="https://files.catbox.moe/45ai2h.png" alt="Scene 4">
-    </div>
+ <div class="lore-image under-construction">
+  <img src="https://files.catbox.moe/45ai2h.png" alt="Scene 4">
+  <div class="overlay-text">IN THE CAT-WORKS</div>
+</div>
     <div class="lore-text">
       <p><strong>Zone D is supposed to be a sanctuary.</strong> Zone D is not a myth.
         It’s real. Walled. Wired. Weaponized.</p>
