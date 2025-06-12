@@ -114,14 +114,19 @@
         flex-direction: column !important;
       }
     }
-    .under-construction {
+    
+.img-wrapper {
   position: relative;
-  filter: grayscale(0.2) brightness(0.7);
+  width: 100%;
+  height: auto;
+}
+   .under-construction .img-wrapper {
+  filter: grayscale(0.1) brightness(0.85);
 }
 
 .overlay-text {
   position: absolute;
-  bottom: 12px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 62, 62, 0.85);
@@ -133,6 +138,7 @@
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 8px #ff3e3e;
   pointer-events: none;
+  white-space: nowrap;
 }
 
   </style>
@@ -190,8 +196,10 @@
 
   <!-- BLOCK 4 -->
  <div class="lore-image under-construction">
-  <img src="https://files.catbox.moe/45ai2h.png" alt="Scene 4">
-  <div class="overlay-text">IN THE CAT-WORKS</div>
+  <div class="img-wrapper">
+    <img src="https://files.catbox.moe/45ai2h.png" alt="Scene 4">
+    <div class="overlay-text">IN THE CAT-WORKS</div>
+  </div>
 </div>
     <div class="lore-text">
       <p><strong>Zone D is supposed to be a sanctuary.</strong> Zone D is not a myth.
