@@ -6,16 +6,19 @@
   <title>Post-Apocalyptic Verse</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 40px 5%;
-      background:
-    /* 1. transparent dark overlay */
-      linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)),
-    /* 2. your background image */
-      url('https://files.catbox.moe/k26d69.png') center/cover no-repeat;
+      background: 
+        linear-gradient(rgba(17,17,17,0.8), rgba(17,17,17,0.8)),
+        url('https://files.catbox.moe/k26d69.png') center/cover no-repeat;
       font-family: 'Segoe UI', sans-serif;
       color: #eaeaea;
+      scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
@@ -25,20 +28,20 @@
       top: 20px;
       left: 20px;
       background: #1a1a1a;
-      color: #ff69b4;
+      color: #ff3e3e;
       padding: 10px 20px;
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 0 8px #ff69b4;
+      box-shadow: 0 0 8px #ff3e3e;
       transition: all 0.3s ease;
       z-index: 999;
     }
 
     .back-btn:hover {
-      background-color: #ff69b4;
+      background-color: #ff3e3e;
       color: #0b0b0c;
-      box-shadow: 0 0 15px #fff, 0 0 25px #ff69b4;
+      box-shadow: 0 0 15px #fff, 0 0 25px #ff3e3e;
     }
 
     .back-btn::before {
@@ -59,10 +62,13 @@
       align-items: center;
       justify-content: center;
       gap: 40px;
-      margin-bottom: 80px;
+      margin-bottom: 120px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .lore-block:nth-child(even) {
+    .lore-block:nth-of-type(even) {
       flex-direction: row-reverse;
     }
 
@@ -79,6 +85,7 @@
       border-radius: 16px;
       border: 3px solid #ff3e3e;
       box-shadow: 0 0 20px #ff3e3e;
+      transition: transform 0.4s ease;
     }
 
     .lore-image:hover {
@@ -94,12 +101,12 @@
       background: rgba(17, 17, 17, 0.7);
       padding: 20px;
       border-radius: 12px;
-      border-left: 4px solid #ff69b4;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+      border-left: 4px solid #ff3e3e;
+      box-shadow: 0 0 10px rgba(255, 62, 62, 0.2);
     }
 
     .lore-text strong {
-      color: #ff69b4;
+      color: #ff3e3e;
     }
 
     @media (max-width: 768px) {
@@ -126,8 +133,8 @@
       <p>Zone A was the first to fall. The Directorate called for isolation. When that failed — eradication. Nuclear sterilization protocols were deployed across Zone A. Citizens included.</p>
       <p>Entire cities were vaporized under the assumption that the infection was environmental. It wasn’t.</p>
       <p>The virus survived the fire. So did a few people. Not immune. Not infected. Just… changed.</p>
-      <p>They call them **burnglass survivors** — altered at the genetic level by radiation, pressure, and proximity to death. Few made it out. Fewer stayed sane.</p>
-      <p>The Directorate went underground. **Zone D was declared a “Potential Recovery Zone.”** Unconfirmed. Possibly fake. Used for morale.</p>
+      <p>They call them <strong>burnglass survivors</strong> — altered at the genetic level by radiation, pressure, and proximity to death. Few made it out. Fewer stayed sane.</p>
+      <p>The Directorate went underground. <strong>Zone D was declared a “Potential Recovery Zone.”</strong> Unconfirmed. Possibly fake. Used for morale.</p>
     </div>
   </div>
 
@@ -141,10 +148,9 @@
         A hemorrhage behind the eyes. Victims would lose speech within days. Collapse within a week. It wasn’t fast, but it was fatal.</p>
       <p>Containment was slow. The Directorate responded with fear — and fire.</p>
       <p>Zone A was the test site. Strategic sterilization. Saturation bombing. Entire cities erased in seconds. But something happened in the ash.</p>
-      <p>The virus didn’t die. It evolved. Radiation warped it. The human hosts changed with it. Bodies thinned. Skin burned translucent. But their voices remained. Twisted. Echoing. Weaponized.
-      <p>Now, the infected don’t moan. They speak.</p>
-      <p>They mimic.</p>
-      <p>They repeat the last thing their victims said. Over and over. They don’t understand the words. They just know it hurts to hear them. Some call them ghosts. Seven calls them worse.</p>
+      <p>The virus didn’t die. It evolved. Radiation warped it. The human hosts changed with it. Bodies thinned. Skin burned translucent. But their voices remained. Twisted. Echoing. Weaponized.</p>
+      <p>Now, the infected don’t moan. They speak. They mimic. They repeat the last thing their victims said. Over and over. They don’t understand the words. They just know it hurts to hear them.</p>
+      <p>Some call them ghosts. Seven calls them worse.</p>
     </div>
   </div>
 
@@ -180,7 +186,7 @@
     </div>
   </div>
 
-  <!-- Scroll animation script -->
+  <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
