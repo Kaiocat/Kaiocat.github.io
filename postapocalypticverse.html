@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Post-Apocalyptic Verse</title>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -149,19 +149,33 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Black Ops One', sans-serif;
-  font-size: 2rem;
+  font-family: 'Creepster', cursive;
+  font-size: 2.2rem;
   color: #ff3e3e;
   text-shadow:
     0 0 5px #000,
-    0 0 10px #ff3e3e;
-  letter-spacing: 2px;
+    0 0 10px #ff3e3e,
+    0 2px 4px rgba(0, 0, 0, 0.6);
   background: rgba(0, 0, 0, 0.35);
-  padding: 8px 18px;
-  border-radius: 8px;
+  padding: 8px 20px;
+  border-radius: 6px;
+  letter-spacing: 2px;
   pointer-events: none;
-  opacity: 1;
+  animation: bloodDrip 2.5s infinite ease-in-out alternate;
 }
+
+/* BLOOD DRIP animation */
+@keyframes bloodDrip {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    text-shadow: 0 0 5px #000, 0 0 10px #ff3e3e;
+  }
+  100% {
+    transform: translateX(-50%) translateY(3px) scale(1.02);
+    text-shadow: 0 2px 8px #ff3e3e, 0 4px 14px #ff0000;
+  }
+}
+
 
   </style>
 </head>
